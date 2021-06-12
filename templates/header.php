@@ -32,15 +32,32 @@
 
                 <form class="form-inline my-2 my-lg-0">
                     <li class="nav-item dropdown" style="list-style-type:none;">
-                        <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 0px;">
+                        <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                ¡Bienvenido!
+                                <?php
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                        echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    }
+                                ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">Iniciar sesión</a>
-                                <a class="dropdown-item" href="#">Registrarse</a>
+                                <?php
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                        echo "
+                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                        ";
+                                    }
+                                    else {
+                                        echo "
+                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                        ";
+                                    }
+                                ?>
+
                                 <a class="dropdown-item" href="#" hidden>Another action</a>
                                 <a class="dropdown-item" href="#" hidden>Something else here</a>
                             </div>
@@ -59,11 +76,17 @@
                         <a class="nav-link" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Artículos</a>
+                        <a class="nav-link" href="articulos.php">Artículos</a>
                     </li>
-                    <li class="nav-item" hidden>
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+
+                    <?php
+                        if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
+                            echo "
+                            <li class='nav-item'>
+                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                            </li>";
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>

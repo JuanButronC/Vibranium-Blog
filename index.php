@@ -1,5 +1,5 @@
 <?php
-include 'templates/header.html';
+include 'templates/header.php';
 ?>
 <?php
     //include the main view
