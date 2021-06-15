@@ -186,7 +186,7 @@
                     WHERE c.id_articulo = '$idArticulo'
                     ORDER BY c.fecha_creacion DESC";
                     $resultado = mysqli_query($db, $queryComentarios);
-                    if (mysqli_query($db, $sql)) {
+                    if (mysqli_query($db, $queryComentarios)) {
                         $_SESSION["estatusComentario"] = "Su comentario ha sido añadido con éxito";
                         $totalComentarios = mysqli_num_rows($resultado);
                 ?>
