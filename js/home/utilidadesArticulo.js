@@ -19,18 +19,18 @@ $(document).ready(function () {
     });
 
     $("#div-main-articulos").on("click", ".card-articulo-img ", function (e) {
-        var decada = $(this).parent().attr("decada-articulo");
-        var siglo = $(this).parent().attr("siglo-articulo");
+        
         var id = $(this).parent().attr("id-articulo");
-        alert(id + "/" + siglo + "/" + decada);
+        var url = "/Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        $(location).attr('href',url);
 
     });
 
     $("#div-main-articulos").on("click", ".card-articulo-body", function (e) {
-        var decada = $(this).parent().attr("decada-articulo");
-        var siglo = $(this).parent().attr("siglo-articulo");
+        
         var id = $(this).parent().attr("id-articulo");
-        alert(id + "/" + siglo + "/" + decada);
+        var url = "/Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        $(location).attr('href',url);
 
     });
 
