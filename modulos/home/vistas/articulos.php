@@ -1,4 +1,48 @@
+<?php
+include '../funciones/comunes.php';
+$error=false;
+$msgErr="";
+$siglo="";
+$decada="";
 
+if(!empty($_GET["siglo"])){
+    if(!is_numeric($_GET["siglo"])){
+        $msgErr="Error al recuperar el siglo: <br>Debe ser númerico";
+        $error=true;
+    }else{
+        $siglo=limpiaEntrada($_GET["siglo"]);
+        echo $siglo;
+    }             
+}
+
+if(!empty($_GET["decada"])){
+    if(!is_numeric($_GET["decada"])){
+        $msgErr="Error al recuperar la decada: <br>Debe ser númerica";
+        $error=true;
+    }else{
+        $decada=limpiaEntrada($_GET["decada"]);
+    }             
+}
+if($error){
+?>
+    <div class="row" style="margin-top: 20px;">
+            <div class="col-md-12">
+                <div class="card text-center bg-prim">
+                    <div class="card-body">
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-12 ">
+                                <h3 class= 'card-title'> <span class='fa fa-exclamation-triangle'></span></h3>
+                                <h3 class="card-title">Ocurrio un Error</h3>
+                               <p><?php echo $msgErr?></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <?php }else{   ?>
+ <div id="div-data-get" get-data-siglo="<?php echo $siglo?>" get-data-decada="<?php echo $decada?>"></div>       
 <div class="container" id="div-main-articulos" style="margin-bottom:25px">
 
 <nav class="navbar navbar-expand-lg bg-prim" style="margin-top:20px;">
@@ -180,7 +224,9 @@
 </div>
 </div>
 
-<script src="js/articulos/utilidadesArticulo.js" type="text/javascript"></script>
+<script src="js/home/utilidadesArticulo.js" type="text/javascript"></script>
+
+<?php } ?>
 
 
 

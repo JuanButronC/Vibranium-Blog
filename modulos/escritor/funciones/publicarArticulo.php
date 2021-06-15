@@ -1,8 +1,7 @@
 <?php
 
     include 'comunes.php';
-    $_SESSION["id-articulo"]=3;
-    $_SESSION["id-escritor"]=3;
+    $_SESSION["idUsuario"]=3;
 
 
     $error=false;
@@ -10,24 +9,24 @@
     $idArticulo="";
     $idAutor="";
 
-    if(isset($_SESSION["id-escritor"])){
-        if(!is_numeric($_SESSION["id-escritor"])){
+    if(isset($_SESSION["idUsuario"])){
+        if(!is_numeric($_SESSION["idUsuario"])){
             $msgErr="El id debe ser númerico";
             $error=true;
         }else{
-            $idAutor=limpiaEntrada($_SESSION["id-escritor"]);
+            $idAutor=limpiaEntrada($_SESSION["idUsuario"]);
         }             
     }else{
         $msgErr="El id es requerido";
         $error=true;
     }
 
-    if(isset($_SESSION["id-articulo"])){
-        if(!is_numeric($_SESSION["id-articulo"])){
+    if(isset($_GET["idArticulo"])){
+        if(!is_numeric($_GET["idArticulo"])){
             $msgErr="El id debe ser númerico";
             $error=true;
         }else{
-            $idArticulo=limpiaEntrada($_SESSION["id-articulo"]);
+            $idArticulo=limpiaEntrada($_GET["idArticulo"]);
         }             
     }else{
         $msgErr="El id es requerido";

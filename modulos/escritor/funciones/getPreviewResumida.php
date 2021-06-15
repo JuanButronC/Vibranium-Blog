@@ -1,18 +1,17 @@
 <?php
 
     include 'comunes.php';
-    $_SESSION["id-articulo"]=3;
 
     $error=false;
     $msgErr="";
     $idArticulo="";
 
-    if(isset($_SESSION["id-articulo"])){
-        if(!is_numeric($_SESSION["id-articulo"])){
+    if(isset($_GET["idArticulo"])){
+        if(!is_numeric($_GET["idArticulo"])){
             $msgErr="El id debe ser númerico";
             $error=true;
         }else{
-            $idArticulo=limpiaEntrada($_SESSION["id-articulo"]);
+            $idArticulo=limpiaEntrada($_GET["idArticulo"]);
         }             
     }else{
         $msgErr="El id es requerido";

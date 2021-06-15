@@ -1,3 +1,41 @@
+<?php
+include '../funciones/comunes.php';
+$error=false;
+$msgErr="";
+$idArticulo="";
+
+if(!empty($_GET["idArticulo"])){
+    if(!is_numeric($_GET["idArticulo"])){
+        $msgErr="Error al recuperar el artículo: <br>El id debe ser númerico";
+        $error=true;
+    }else{
+        $idArticulo=limpiaEntrada($_GET["idArticulo"]);
+    }             
+}else{
+    $msgErr="Error al recuperar el artículo: <br>El id es requerido";
+    $error=true;
+}
+
+if($error){
+?>
+<div class="row" style="margin-top: 20px;">
+        <div class="col-md-12">
+            <div class="card text-center bg-prim">
+                <div class="card-body">
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-12 ">
+                            <h3 class= 'card-title'> <span class='fa fa-exclamation-triangle'></span></h3>
+                            <h3 class="card-title">Ocurrio un Error</h3>
+                           <p><?phpecho $msgErr?></p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php }else{ ?>
+<div id="div-data-get" get-data-id-articulo="<?php echo $idArticulo?>" ></div>       
 
 <div class="container" style="margin-bottom:25px">
 
@@ -52,4 +90,5 @@
 
 </div>
 
-<script src="js/escritores/utilidadesPublicar.js" type="text/javascript"></script>
+<script src="js/escritor/utilidadesPublicar.js" type="text/javascript"></script>
+<?php } ?>
