@@ -2,6 +2,21 @@ header, footer{
     background-color: #4b608a;
 }
 
+
+.bg-prim{
+    background-color: #4b608a;
+    color: white;
+}
+.bg-second{
+    background-color: #e6eeff;
+    color: #4b608a;
+}
+
+.card-second{
+    background-color: #e6eeff;
+    color: #4b608a;
+    border-color: #4b608a;
+}
 body{
     background-color: #e6eeff;
 }
@@ -21,4 +36,10 @@ footer {
     font-size: 24px;
     font-weight: bold;
     
+}
+
+
+.responsive-iframe {
+    width: 100%;
+    height: auto;
 }
