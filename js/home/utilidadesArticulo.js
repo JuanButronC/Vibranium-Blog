@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("#div-main-articulos").on("click", ".card-articulo-img ", function (e) {
         
         var id = $(this).parent().attr("id-articulo");
-        var url = "/Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        var url = "/Pruebas//Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
         $(location).attr('href',url);
 
     });
@@ -29,7 +29,7 @@ $(document).ready(function () {
     $("#div-main-articulos").on("click", ".card-articulo-body", function (e) {
         
         var id = $(this).parent().attr("id-articulo");
-        var url = "/Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        var url = "/Pruebas//Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
         $(location).attr('href',url);
 
     });
@@ -159,7 +159,7 @@ $(document).ready(function () {
 function getCientificos(cientificos) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getConcidenciasCientifico.php",
+        url: "../funciones/getConcidenciasCientifico.php",
         data: { cientificos: cientificos },
         dataType: "html",
         success: function (response) {
@@ -189,7 +189,6 @@ function setDataGet() {
         data_get = data_get.trim();
         if (data_get !== "") {
             if (FORMAT.test(data_get)) {
-                alert("Format OK" + data_get);
                 getSiglo(data_get);
             }
         }else{
@@ -201,7 +200,7 @@ function setDataGet() {
 function getDecada(decada) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getCoincidenciasDecada.php",
+        url: "../funciones/getCoincidenciasDecada.php",
         data: { decada: decada },
         dataType: "html",
         success: function (response) {
@@ -221,7 +220,7 @@ function getDecada(decada) {
 function getSiglo(siglo) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getCoincidenciasSiglo.php",
+        url: "../funciones/getCoincidenciasSiglo.php",
         data: { siglo: siglo },
         dataType: "html",
         success: function (response) {
@@ -242,7 +241,7 @@ function getSiglo(siglo) {
 function getAutor(id, autor) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getConcidenciasAutor.php",
+        url: "../funciones/getConcidenciasAutor.php",
         data: { idAutor: id },
         dataType: "html",
         success: function (response) {
@@ -262,7 +261,7 @@ function getAutor(id, autor) {
 function getArea(id, area) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getConcidenciasArea.php",
+        url: "../funciones/getConcidenciasArea.php",
         data: { idArea: id },
         dataType: "html",
         success: function (response) {
@@ -282,7 +281,7 @@ function getArea(id, area) {
 function getFiltros(inputs) {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getConcidenciasFiltros.php",
+        url: "../funciones/getConcidenciasFiltros.php",
         data: inputs,
         dataType: "html",
         success: function (response) {
@@ -303,7 +302,7 @@ function getFiltros(inputs) {
 function getCoincidencias() {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getConcidencias.php",
+        url: "../funciones/getConcidencias.php",
         data: $("#form-busqueda").serialize(),
         dataType: "html",
         success: function (response) {
@@ -324,7 +323,7 @@ function getCoincidencias() {
 function getArticulos() {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getArticulos.php",
+        url: "../funciones/getArticulos.php",
         dataType: "html",
         success: function (response) {
             hide_search_heading();
@@ -343,7 +342,7 @@ function getArticulos() {
 function getAreas() {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getAreas.php",
+        url: "../funciones/getAreas.php",
         dataType: "html",
         success: function (response) {
             $("#areaNav").html(response);
@@ -359,7 +358,7 @@ function getAreas() {
 function getAutores() {
     $.ajax({
         type: "GET",
-        url: "modulos/home/funciones/getAutoresDestacados.php",
+        url: "../funciones/getAutoresDestacados.php",
         dataType: "html",
         success: function (response) {
             $("#div-autores-destacados").html(response);

@@ -257,7 +257,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                         Siglo XX
                     </a>
                     <br>
-                    <a href="escritor/articulos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
+                    <a href="vistas/articulos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
                         Siglo XXI
                     </a>
                 </div>
