@@ -18,6 +18,7 @@ session_start();
 
 
 
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -28,6 +29,7 @@ session_start();
     <script src="js/home/accionesBotones.js"></script>
     <script src="js/home/funciones.js"></script>
     <script src="js/articulo/individualFunciones.js"></script>
+
 
 </head>
 
@@ -50,17 +52,17 @@ session_start();
                 <form class="form-inline my-2 my-lg-0">
                     <li class="nav-item dropdown" style="list-style-type:none;">
                         <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
-                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                        echo "Bienvenido " + $_SESSION["nombreUsuario"];
-                                    }
+                                if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <?php
+
                                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                         echo "
                                             <a id='btnDatosPersonales' class='dropdown-item' >Datos personales</a>
@@ -71,8 +73,9 @@ session_start();
                                         echo "
                                             <a id='btnLogin' class='dropdown-item'>Iniciar sesión</a>
                                             <a id='btnSignUp' class='dropdown-item'>Registrarse</a>
+
                                         ";
-                                    }
+                                }
                                 ?>
 
                                 <a class="dropdown-item" href="#" hidden>Another action</a>
@@ -97,12 +100,12 @@ session_start();
                     </li>
 
                     <?php
-                        if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
-                            echo "
+                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
+                        echo "
                             <li class='nav-item'>
                                 <a id='btnMisArticulos' class='nav-link'>Mis artículos</a>
                             </li>";
-                        }
+                    }
                     ?>
                 </ul>
             </div>
