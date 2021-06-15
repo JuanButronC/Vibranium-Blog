@@ -37,7 +37,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                        echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                        echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                     }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
