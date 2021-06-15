@@ -1,14 +1,12 @@
 <?php
 include 'templates/header.php';
 ?>
-<?php
-//include 'modulos/escritor/vistas/publicar.php';
-//include 'modulos/home/vistas/articulos.php';
 
-?>
-<div id="div-prueba"></div>
+<div id="containerPrincipal" class="container" style="height:100%; margin-bottom:40px; margin-top:40px; background-color: white!important;">
 
-<script src="js/prueba.js" type="text/javascript"></script>
+</div>
+
+
 <?php
 include 'templates/footer.html';
 ?>
