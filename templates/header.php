@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -25,6 +28,7 @@
     <script src="js/home/accionesBotones.js"></script>
     <script src="js/home/funciones.js"></script>
     <script src="js/articulo/individualFunciones.js"></script>
+
 </head>
 
 <body>
