@@ -6,7 +6,6 @@ $(document).ready(function() {
         var arregloDatos = $("#formActualizar").serializeArray();
         var campoVacío;
         $.each(arregloDatos, function(index, value) {
-            console.log(value);
             if (value.value === "") {
                 campoVacío = true;
             }

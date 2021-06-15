@@ -98,8 +98,8 @@
         $nomBD = "vibraniumblogdb";
 
         $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
-        $idArticulo = mysqli_real_escape_string($db, 1);
-        $idLector = mysqli_real_escape_string($db, 1);
+        $idArticulo = mysqli_real_escape_string($db, $_GET["idArticulo"]);
+        $idLector = mysqli_real_escape_string($db, $idUsuario);
         $comentarioNuevo = mysqli_real_escape_string($db, $_POST["comentarioNuevo"]);
         if (!$db) {
             die("La conexión falló: " . mysqli_connect_error());
