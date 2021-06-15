@@ -186,110 +186,116 @@
                     WHERE c.id_articulo = '$idArticulo'
                     ORDER BY c.fecha_creacion DESC";
                     $resultado = mysqli_query($db, $queryComentarios);
-                    $totalComentarios = mysqli_num_rows($resultado);
+                    if (mysqli_query($db, $sql)) {
+                        $_SESSION["estatusComentario"] = "Su comentario ha sido añadido con éxito";
+                        $totalComentarios = mysqli_num_rows($resultado);
                 ?>
-                    <div class="col-md-12">
-                        <hr>
-                        <h4 class="card-title">DEJA TU COMENTARIO</h4>
-                        <div class="card border-info">
-                            <div class="card-header text-info">
-                                <h5 class="card-title"><?php echo $totalComentarios ?> comentarios</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row" style="margin-bottom:40px">
-                                    <div class="col-md-1">
-                                        <img src="../../../img/profileImg.png" class="img-responsive img-rounded" style="height:70px; width:70px">
-                                    </div>
-                                    <div class="col-md-11">
-                                        <div class="card" style="border-radius: 0px 40px 5px 5px !important;">
-                                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" type="submit" id="formComentario">
-                                                <div class="card-body">
-                                                    <textarea id="comentarioNuevo" name="comentarioNuevo" style="width:100%; height:100%; min-height:100px; max-height:180px" placeholder="Cuéntanos qué te pareció el artículo"></textarea>
-                                                    <input hidden value="<?php echo $idUsuario ?>" name="idUsuario" />
-                                                </div>
-                                                <div class="card-footer">
-                                                    <button id="btnPublicar" class="btn btn-info" style="width:100%" type="submit">
-                                                        Publicar
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <h4 class="card-title">DEJA TU COMENTARIO</h4>
+                            <div class="card border-info">
+                                <div class="card-header text-info">
+                                    <h5 class="card-title"><?php echo $totalComentarios ?> comentarios</h5>
                                 </div>
-                                <!--CARDS DINÁMICAS PARA CARGAR COMMENTS-->
-                                <div id="dinamycCardsComments">
-                                    <?php
-                                    if ($totalComentarios == 0) {
-                                    ?>
-                                        <br>
-                                        <div align="center">
-                                            <h2>No hay comentarios aún, ¡Sé el primero en comentar!</h2>
+                                <div class="card-body">
+                                    <div class="row" style="margin-bottom:40px">
+                                        <div class="col-md-1">
+                                            <img src="../../../img/profileImg.png" class="img-responsive img-rounded" style="height:70px; width:70px">
                                         </div>
-                                        <br>
-                                    <?php
-                                    }
-                                    while ($mostrar = mysqli_fetch_array($resultado)) {
-                                    ?>
-                                        <hr>
-                                        <div class="row" style="margin-top:20px; margin-bottom:20px">
-                                            <div class="col-md-1">
-                                                <img src="../../../img/profileImg.png" class="img-responsive img-rounded" style="height:70px; width:70px">
+                                        <div class="col-md-11">
+                                            <div class="card" style="border-radius: 0px 40px 5px 5px !important;">
+                                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" type="submit" id="formComentario">
+                                                    <div class="card-body">
+                                                        <textarea id="comentarioNuevo" name="comentarioNuevo" style="width:100%; height:100%; min-height:100px; max-height:180px" placeholder="Cuéntanos qué te pareció el artículo"></textarea>
+                                                        <input hidden value="<?php echo $idUsuario ?>" name="idUsuario" />
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button id="btnPublicar" class="btn btn-info" style="width:100%" type="submit">
+                                                            Publicar
+                                                        </button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="col-md-11">
-                                                <div id="Comment" style="width:100%; height:100%; min-height:100px; max-height:180px;">
-                                                    <div id="HeaderComment">
-                                                        <div class="row">
-                                                            <div class="col-md-4">
-                                                                <h4><?php echo $mostrar['nombre'] ?></h4>
-                                                            </div>
-                                                            <div class="col-md-8" align="right">
-                                                                <?php
-                                                                date_default_timezone_set("America/Mexico_City");
-                                                                $date = new DateTime(date("Y-m-d H:i:s"));
-                                                                $date1 = new DateTime($mostrar['fecha_creacion']);
-                                                                $diff = $date1->diff($date);
-                                                                if ($diff->days < 1) {
-                                                                    if ($diff->h < 1) {
-                                                                        if ($diff->i < 1) {
-                                                                            echo "hace unos instantes";
+                                        </div>
+                                    </div>
+                                    <!--CARDS DINÁMICAS PARA CARGAR COMMENTS-->
+                                    <div id="dinamycCardsComments">
+                                        <?php
+                                        if ($totalComentarios == 0) {
+                                        ?>
+                                            <br>
+                                            <div align="center">
+                                                <h2>No hay comentarios aún, ¡Sé el primero en comentar!</h2>
+                                            </div>
+                                            <br>
+                                        <?php
+                                        }
+                                        while ($mostrar = mysqli_fetch_array($resultado)) {
+                                        ?>
+                                            <hr>
+                                            <div class="row" style="margin-top:20px; margin-bottom:20px">
+                                                <div class="col-md-1">
+                                                    <img src="../../../img/profileImg.png" class="img-responsive img-rounded" style="height:70px; width:70px">
+                                                </div>
+                                                <div class="col-md-11">
+                                                    <div id="Comment" style="width:100%; height:100%; min-height:100px; max-height:180px;">
+                                                        <div id="HeaderComment">
+                                                            <div class="row">
+                                                                <div class="col-md-4">
+                                                                    <h4><?php echo $mostrar['nombre'] ?></h4>
+                                                                </div>
+                                                                <div class="col-md-8" align="right">
+                                                                    <?php
+                                                                    date_default_timezone_set("America/Mexico_City");
+                                                                    $date = new DateTime(date("Y-m-d H:i:s"));
+                                                                    $date1 = new DateTime($mostrar['fecha_creacion']);
+                                                                    $diff = $date1->diff($date);
+                                                                    if ($diff->days < 1) {
+                                                                        if ($diff->h < 1) {
+                                                                            if ($diff->i < 1) {
+                                                                                echo "hace unos instantes";
+                                                                            } else {
+                                                                                echo "hace " . $diff->format('%i minutos');
+                                                                            }
                                                                         } else {
-                                                                            echo "hace " . $diff->format('%i minutos');
+                                                                            echo "hace " . $diff->format('%H horas');
                                                                         }
                                                                     } else {
-                                                                        echo "hace " . $diff->format('%H horas');
+                                                                        echo "hace " . $diff->format('%d') . ' días';
                                                                     }
-                                                                } else {
-                                                                    echo "hace " . $diff->format('%d') . ' días';
-                                                                }
-                                                                ?>
-                                                            </div>
-                                                            <div class="col-md-4" style="text-align:right" hidden>
-                                                                10
-                                                                <a>
-                                                                    <img src="../../../img/like.png" style="width:20px; height:20px">
-                                                                </a>
-                                                                10
-                                                                <a>
-                                                                    <img src="../../../img/dislike.png" style="width:20px; height:20px">
-                                                                </a>
+                                                                    ?>
+                                                                </div>
+                                                                <div class="col-md-4" style="text-align:right" hidden>
+                                                                    10
+                                                                    <a>
+                                                                        <img src="../../../img/like.png" style="width:20px; height:20px">
+                                                                    </a>
+                                                                    10
+                                                                    <a>
+                                                                        <img src="../../../img/dislike.png" style="width:20px; height:20px">
+                                                                    </a>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div id="textoComment" style="text-align: justify;">
-                                                        <?php echo $mostrar['texto'] ?>
+                                                        <div id="textoComment" style="text-align: justify;">
+                                                            <?php echo $mostrar['texto'] ?>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                             <?php
+                                        }
                                     }
+                                } else {
+                                    echo "Error " . $sql . " :" . mysqli_error($db);
+                                    $_SESSION["estatusComentario"] = "Su comentario no pudo añadirse";
                                 }
                             }
                             ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
 
     </div>

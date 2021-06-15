@@ -197,7 +197,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 while ($mostrar = mysqli_fetch_array($resultado)) {
                     if ($contador == 1) {
                         echo '<div class="carousel-item active">';
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<div class="card mb-3">';
                         echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']) . '" alt="Card image cap" height="300px" width="100%">';
                         echo '<div class="card-body">';
@@ -211,7 +211,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
             </div>';
                     } else {
                         echo '<div class="carousel-item">';
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<div class="card mb-3">';
                         echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']) . '" alt="Card image cap" height="300px" width="100%">';
                         echo '<div class="card-body">';
@@ -243,9 +243,9 @@ $resultadoAreas = mysqli_query($conn, $areas);
             <div class="row ">
                 <div class="col-md-6 border-right border-info text-center">
                     <h3><b>Décadas más populares</b></h3>
-                    <a href="../escritor/artículos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
+                    <a href="vistas/articulos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
                     <br>
-                    <a href="../escritor/artículos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
+                    <a href="../escritor/articulos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
                     <br>
                     <a href="../escritor/artículos.php?decada=7" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 70's </a>
                     <br>
