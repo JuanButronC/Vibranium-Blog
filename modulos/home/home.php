@@ -197,7 +197,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 while ($mostrar = mysqli_fetch_array($resultado)) {
                     if ($contador == 1) {
                         echo '<div class="carousel-item active">';
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<div class="card mb-3">';
                         echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']) . '" alt="Card image cap" height="300px" width="100%">';
                         echo '<div class="card-body">';
@@ -211,7 +211,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
             </div>';
                     } else {
                         echo '<div class="carousel-item">';
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrar["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<div class="card mb-3">';
                         echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']) . '" alt="Card image cap" height="300px" width="100%">';
                         echo '<div class="card-body">';
@@ -230,10 +230,10 @@ $resultadoAreas = mysqli_query($conn, $areas);
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <a class="carousel-control-prev" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
+            <a class="carousel-control-next" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
@@ -243,21 +243,21 @@ $resultadoAreas = mysqli_query($conn, $areas);
             <div class="row ">
                 <div class="col-md-6 border-right border-info text-center">
                     <h3><b>Décadas más populares</b></h3>
-                    <a href="../escritor/artículos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
+                    <a href="vistas/articulos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
                     <br>
-                    <a href="../escritor/artículos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
+                    <a href="vistas/articulos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
                     <br>
-                    <a href="../escritor/artículos.php?decada=7" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 70's </a>
+                    <a href="vistas/articulos.php?decada=7" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 70's </a>
                     <br>
-                    <a href="../escritor/artículos.php?decada=6" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 60's </a>
+                    <a href="vistas/articulos.php?decada=6" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 60's </a>
                 </div>
                 <div class="col-md-6 text-center">
                     <h3><b>Artículos por Siglo</b></h3>
-                    <a href="../escritor/artículos.php?siglo=20" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
+                    <a href="vistas/articulos.php?siglo=20" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
                         Siglo XX
                     </a>
                     <br>
-                    <a href="../escritor/artículos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
+                    <a href="escritor/articulos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
                         Siglo XXI
                     </a>
                 </div>
@@ -273,7 +273,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 <div class="col-md-6 text-justify pad-5">
                     <?php
                     while ($mostrarDestacados = mysqli_fetch_array($resultadoArticulos)) {
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrarDestacados["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados['titulo'] . '</h3>
                                  <p>' . $mostrarDestacados['resumen'] . '</p>';
                         echo '</a>';
@@ -284,7 +284,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 <div class="col-md-6 text-justify pad-5">
                     <?php
                     while ($mostrarDestacados2 = mysqli_fetch_array($resultadoArticulos2)) {
-                        echo '<a href="articulo/individual.php?idArticulo=' . $mostrarDestacados2["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados2["id"] . '" style="color: black;text-decoration: none;">';
                         echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados2['titulo'] . '</h3>
                                  <p>' . $mostrarDestacados2['resumen'] . '</p>';
                         echo '</a>';
