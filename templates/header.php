@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="css/templates.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 </head>
 
 <body>
@@ -33,29 +37,27 @@
                 <form class="form-inline my-2 my-lg-0">
                     <li class="nav-item dropdown" style="list-style-type:none;">
                         <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
-                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                        echo "Bienvenido " + $_SESSION["nombreUsuario"];
-                                    }
+                                if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <?php
-                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                        echo "
+                                if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                    echo "
                                             <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
                                             <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
-                                    }
-                                    else {
-                                        echo "
+                                } else {
+                                    echo "
                                             <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
                                             <a class='dropdown-item' href='registro.php'>Registrarse</a>
                                         ";
-                                    }
+                                }
                                 ?>
 
                                 <a class="dropdown-item" href="#" hidden>Another action</a>
@@ -80,12 +82,12 @@
                     </li>
 
                     <?php
-                        if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
-                            echo "
+                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
+                        echo "
                             <li class='nav-item'>
                                 <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
                             </li>";
-                        }
+                    }
                     ?>
                 </ul>
             </div>
