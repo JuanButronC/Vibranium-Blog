@@ -118,13 +118,13 @@ $resultadoAreas = mysqli_query($conn, $areas);
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../datosPersonales/datosPersonales.php'>Datos personales</a>
                                             <a class='dropdown-item' href='../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
                                             <a class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../signIn/registrar.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -239,15 +239,16 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 <a class="carousel-control-next" href="#demo" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
+                </div>
             <?php
                     }
                 } else {
             ?>
-            <div id="demo" class="carousel slide pad-5" data-ride="carousel">
+            <div id="demo2" class="carousel slide pad-5" data-ride="carousel">
                 <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
+                    <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                    <li data-target="#demo2" data-slide-to="1"></li>
+                    <li data-target="#demo2" data-slide-to="2"></li>
                 </ul>
 
                 <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
@@ -262,10 +263,10 @@ $resultadoAreas = mysqli_query($conn, $areas);
                     </div>
                 </div>
 
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <a class="carousel-control-prev" href="#demo2" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
+                <a class="carousel-control-next" href="#demo2" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
@@ -274,7 +275,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 }
         ?>
 
-            </div>
+            
 
             <div id="intro" style="padding-left: 3%; padding-right: 3%;">
                 <div class="row ">
