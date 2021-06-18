@@ -187,7 +187,7 @@ if (isset($_POST['submit'])) {
                         </button>
                         <br><br>
                         <br>
-                        <p>¿No tienes una cuenta?<a href="#""><i><u style="margin-left:60px">Registrate, es gratis</u></i></a></p>
+                        <p>¿No tienes una cuenta?<a href="../signIn/registro.php"><i><u style="margin-left:60px">Registrate, es gratis</u></i></a></p>
                     </div>
                     <div class="col">
                         <div class=container" style="text-align:right">
