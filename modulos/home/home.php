@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servidor = "localhost";
 $usuario = "root";
 $pwd = "";
@@ -111,8 +112,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
-                                    session_start();
+                                    echo "Bienvenido ". $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>

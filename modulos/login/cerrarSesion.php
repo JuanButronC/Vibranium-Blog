@@ -1,4 +1,5 @@
 <?php
+session_start();
 unset($_SESSION['idUsuario']);
 unset($_SESSION['correo']);
 unset($_SESSION['rol']);
