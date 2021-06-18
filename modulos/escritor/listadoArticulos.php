@@ -2,7 +2,7 @@
    function obtenConexionBD() {
       $servidorBD = "localhost";
       $usuarioBD = "root";
-      $contraseniaBD = "root";
+      $contraseniaBD = "";
       $nombreBD = "VibraniumBlogDB";
 
       $conexion = mysqli_connect($servidorBD, $usuarioBD, $contraseniaBD, $nombreBD);
@@ -56,7 +56,7 @@
          while ($fila = mysqli_fetch_assoc($datosArticulos)) {
             $tabla .= "
                <tr>
-                  <td class='text-center'><img src='" . 'data:image/jpeg;base64,' . base64_encode($fila['imagen']) . "' style='max-width: 50%; height: auto;'></td>
+                  <td class='text-center'><img src='" . 'data:image/jpeg;base64,' . $fila['imagen'] . "' style='max-width: 50%; height: auto;'></td>
                   <td class='text-center align-middle'>" . $fila["titulo"] . "</td>
                   <td class='text-center align-middle'>" . $fila["fecha_creacion"] . "</td>
                   <td class='text-center align-middle'>" . $fila["fecha_publicacion"] . "</td>
