@@ -112,7 +112,7 @@ if(!empty($_GET["decada"])){
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="../home.php">InicioH</a>
+                        <a class="nav-link" href="../home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="articulos.php">Artículos</a>
