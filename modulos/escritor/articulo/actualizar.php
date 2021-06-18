@@ -117,7 +117,7 @@ if (isset($_POST['idArticulo'])) {
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
