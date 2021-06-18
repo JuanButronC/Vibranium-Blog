@@ -224,7 +224,6 @@ function getSiglo(siglo) {
         data: { siglo: siglo },
         dataType: "html",
         success: function (response) {
-            alert("Siglo OK");
             $("#div-articulos").html(response);
             var msg = "Descubrimientos del siglo <strong>" + siglo + "</strong>";
             set_search_heading(msg);

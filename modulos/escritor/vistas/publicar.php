@@ -101,7 +101,7 @@ if(!empty($_GET["idArticulo"])){
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="articulos.php">Artículos</a>

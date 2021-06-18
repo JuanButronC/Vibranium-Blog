@@ -32,7 +32,7 @@
                 echo "<span class= 'badge bg-second '><a class='a-siglo' id='".$fila["id_articulo"]."-".$fila["siglo"]."' href= ' '> Siglo ".$fila["siglo"]."</a></span>"; 
                 echo "<span class= 'badge bg-second '><a class='a-decada' id='".$fila["id_articulo"]."-".$fila["decada"]."' href= ' '>".get_decada_label($fila["decada"])."</a></span>"; 
                 echo "</div>";   
-                echo "<img class= 'card-img-top card-articulo-img' src = 'data:image/png;base64,". base64_encode($fila['imagen'])."' height= '200px '  width= '100% ' alt= ' '>"; 
+                echo "<img class= 'card-img-top card-articulo-img' src = 'data:image/png;base64,".$fila['imagen']."' height= '200px '  width= '100% ' alt= ' '>"; 
                 echo "<div class= 'card-body card-articulo-body'>"; 
                 echo "<h3 class= 'card-title text-left '>".$fila["titulo"]."</h3>"; 
                 echo "<p class= 'text-left '>".$fila["autor"]."</p>"; 
