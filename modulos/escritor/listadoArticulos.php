@@ -65,7 +65,7 @@
             if ($fila["estatus"] == 0) {
                $tabla .= "
                      <td class='text-center align-middle'><a href='articulo/actualizar.php?idArticulo=" . $fila["id"] . "' class='btn btn-warning'>Editar</a></td>
-                     <td class='text-center align-middle'><a href='eliminar.php?id=" . $fila["id"] . "' class='btn btn-danger'>Eliminar</a></td>
+                     <td class='text-center align-middle'><a href='articulo/eliminar.php?id=" . $fila["id"] . "' class='btn btn-danger'>Eliminar</a></td>
                      <td class='text-center align-middle'><a href='vistas/publicar.php?idArticulo=" . $fila["id"] . "' class='btn btn-info'>Publicar</a></td>
                   </tr>
                ";
