@@ -3,7 +3,7 @@
       $servidorBD = "localhost";
       $usuarioBD = "root";
       $contraseniaBD = "";
-      $nombreBD = "VibraniumBlogDB";
+      $nombreBD = "vibraniumblogdb";
 
       $conexion = mysqli_connect($servidorBD, $usuarioBD, $contraseniaBD, $nombreBD);
 
