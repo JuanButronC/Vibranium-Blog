@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!--Actualizar artículo-->
 <?php
 if (isset($_POST['idArticulo'])) {
