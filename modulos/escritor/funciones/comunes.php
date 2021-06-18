@@ -97,13 +97,13 @@ function get_conn(){
                      datos_personales.nombre as autor,
                      articulos.id_area as id_area,
                      articulos.imagen as imagen,
-                     AREAS.nombre as area                 
+                     areas.nombre as area                 
 
                 FROM articulos 
                       INNER JOIN datos_personales ON
                             datos_personales.id_usuario=articulos.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=articulos.id_area
+                     INNER JOIN areas ON
+                            areas.id=articulos.id_area
                 WHERE articulos.id=$idArticulo";
 
         return ejecuta_consulta($sql);
