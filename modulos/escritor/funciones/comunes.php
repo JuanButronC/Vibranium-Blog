@@ -80,10 +80,6 @@ function get_conn(){
         $sql="SELECT ARTICULOS.id as id_articulo,
                      ARTICULOS.contenido as contenido                 
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
                 WHERE ARTICULOS.id=$idArticulo";
 
         return ejecuta_consulta($sql);
@@ -97,14 +93,14 @@ function get_conn(){
                      ARTICULOS.siglo as siglo,
                      ARTICULOS.decada as decada,
                      ARTICULOS.cientificos as cientificos,
-                     USUARIOS.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor,
                      ARTICULOS.id_area as id_area,
                      ARTICULOS.imagen as imagen,
                      AREAS.nombre as area                 
 
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
+                      INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                      INNER JOIN AREAS ON
                             AREAS.id=ARTICULOS.id_area
                 WHERE ARTICULOS.id=$idArticulo";

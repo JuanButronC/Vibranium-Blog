@@ -153,7 +153,7 @@ function msjsErrorValidacion() {
 function peticionActualizarDatos(datosEnURL) {
    $.ajax({
       type: "POST",
-      url: "modulos/general/actualizarDatosPersonales.php",
+      url: "actualizarDatosPersonales.php",
       data: datosEnURL,
       success: function (response) {
          response = $.parseJSON(response);

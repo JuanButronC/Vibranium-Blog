@@ -1,9 +1,4 @@
 <?php session_start(); 
-if($_SESSION["idUsuario"] == ""){
-    $idUsuario = $_SESSION["idUsuario"];
-} else {
-    $idUsuario = null;
-}
 ?>
 <!doctype html>
 <html lang="es">

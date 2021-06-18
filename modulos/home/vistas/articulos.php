@@ -159,7 +159,7 @@ if(!empty($_GET["decada"])){
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav" >
             <li class='nav-item'>
-                <a class='nav-link text-white navArea' href='#' id='nav-todas'>Todas las areas</a>
+                <a class='nav-link text-white' href='#' id='nav-todas'>Todas las areas</a>
             </li>    
              
         </ul>

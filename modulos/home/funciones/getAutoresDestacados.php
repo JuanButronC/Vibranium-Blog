@@ -22,8 +22,9 @@ if($resultado_autores["estado"]==0){
 
      mysqli_free_result($autores);  
 }else{
-    echo "<h5 class='text-danger'>Error</h5>";
-    echo "<p class='text-danger'>".$resultado_autores['msgError']."</p>";
+                echo "<h3 class= 'text-center'> <span class='fa fa-exclamation-triangle'></span></h3>"; 
+                echo "<p class= 'text-center'>".$resultado_autores['msgError']."</p>"; 
+               
 } 
 
 
