@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../funciones/comunes.php';
 $error=false;
 $msgErr="";

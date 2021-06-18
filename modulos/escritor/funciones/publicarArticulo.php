@@ -1,7 +1,7 @@
 <?php
 
+    
     include 'comunes.php';
-    $_SESSION["idUsuario"]=3;
 
 
     $error=false;
