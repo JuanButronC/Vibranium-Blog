@@ -331,6 +331,23 @@ if(isset($_SESSION["idUsuario"])){
             </div>
             <div class="col-md-6">
                 <h3>Colaboradores</h3>
+                <ul>
+                    <li>
+                        <h5>Butrón Cañada Juan Jesús</h5>
+                    </li>
+                    <li>
+                        <h5>Díaz Rodríguez Andrés Heladio</h5>
+                    </li>
+                    <li>
+                        <h5>Martínez Carrillo Leonardo</h5>
+                    </li>
+                    <li>
+                        <h5>Reyes Montiel Fernando Brauilo</h5>
+                    </li>
+                    <li>
+                        <h5>Rodriguez Duarte Brando Ivan</h5>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-3">
                 <h3>Newsletter</h3>
