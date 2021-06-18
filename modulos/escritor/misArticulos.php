@@ -1,8 +1,7 @@
 <?php
    session_start();
 
-   $dirRaiz = getcwd() . "/";
-   include $dirRaiz . 'templates/header.php';
+   include $_SESSION["dirRaiz"] . 'templates/header.php';
 ?>
 
 <div class="container">
@@ -22,5 +21,5 @@
 </div>
 
 <?php
-   include $dirRaiz . 'templates/footer.html';
+   include $_SESSION["dirRaiz"] . 'templates/footer.html';
 ?>

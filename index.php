@@ -1,14 +1,6 @@
 <?php
-include 'templates/header.php';
-?>
+    session_start();
+    $_SESSION["dirRaiz"] = getcwd() . "/";
 
-
-<div id="containerPrincipal" class="container" style="height:100%; margin-bottom:40px; margin-top:40px; background-color: white!important;">
-
-</div>
-
-
-
-<?php
-include 'templates/footer.html';
+    header("location: modulos/home/home.php");
 ?>
