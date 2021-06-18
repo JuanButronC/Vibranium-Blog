@@ -46,20 +46,17 @@
                                 <?php
                                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                         echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='modulos/datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='modulos/login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                     }
                                     else {
                                         echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='modulos/login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='modulos/singIn/registro.php'>Registrarse</a>
                                         ";
                                     }
                                 ?>
-
-                                <a class="dropdown-item" href="#" hidden>Another action</a>
-                                <a class="dropdown-item" href="#" hidden>Something else here</a>
                             </div>
                         </label>
                     </li>
@@ -76,14 +73,14 @@
                         <a class="nav-link" href="#">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="modulos/home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
                         if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                             echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='modulos/escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                         }
                     ?>
