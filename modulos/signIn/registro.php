@@ -1,7 +1,7 @@
 <?php
-   $dirRaiz = getcwd() . "/";
+   session_start();
 
-   include $dirRaiz . 'templates/header.php';
+   include $_SESSION["dirRaiz"] . 'templates/header.php';
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -104,5 +104,5 @@
 <script src="registro.js"></script>
 
 <?php
-   include $dirRaiz . 'templates/footer.html';
+   include $_SESSION["dirRaiz"] . 'templates/footer.html';
 ?>
