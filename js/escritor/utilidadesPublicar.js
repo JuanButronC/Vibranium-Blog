@@ -19,7 +19,7 @@ function publicar() {
                     if (FORMAT.test(data_get)) {
                         $.ajax({
                             type: "GET",
-                            url: "modulos/escritor/funciones/publicarArticulo.php",
+                            url: "../funciones/publicarArticulo.php",
                             dataType: "html",
                             data:{idArticulo:data_get},
                             success: function (response) {
@@ -48,7 +48,7 @@ function getArticulo() {
         if (FORMAT.test(data_get)) {
             $.ajax({
                 type: "GET",
-                url: "modulos/escritor/funciones/getPreviewResumida.php",
+                url: "../funciones/getPreviewResumida.php",
                 dataType: "html",
                 data:{idArticulo:data_get},
                 success: function (response) {
@@ -61,7 +61,7 @@ function getArticulo() {
             });
             $.ajax({
                 type: "GET",
-                url: "modulos/escritor/funciones/getPreviewCompleta.php",
+                url: "../funciones/getPreviewCompleta.php",
                 dataType: "html",
                 data:{idArticulo:data_get},
                 success: function (response) {
