@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" integrity="undefined" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="undefined" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/templates.css">
 
 
@@ -26,7 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/fontawesome.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/all.min.js"></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 
@@ -121,7 +121,9 @@
                <label for="nombre">Nombre</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-user"></i>
+                     <div class="input-group-text">
+                     <i class="fas fa-user"></i>
+                     </div>
                   </div>
                   <input type="text" class="form-control" name="nombre" id="nombre">
                </div>
@@ -131,7 +133,9 @@
                <label for="nombre">Apellido Paterno</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-users"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-users"></i>
+                     </div>
                   </div>
                   <input type="text" class="form-control" name="apPat" id="apPat">
                </div>
@@ -141,7 +145,9 @@
                <label for="nombre">Apellido Materno</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-users"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-users"></i>
+                     </div>
                   </div>
                   <input type="text" class="form-control" name="apMat" id="apMat">
                </div>
@@ -151,7 +157,9 @@
                <label for="correo">Correo electrónico (Este será su usuario)</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-envelope"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-envelope"></i>
+                     </div>
                   </div>
                   <input type="text" class="form-control" name="correo" id="correo" placeholder="correo@example.com">
                </div>
@@ -161,7 +169,9 @@
                <label for="contrasenia">Contraseña</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-key"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-key"></i>
+                     </div>
                   </div>
 
                   <input type="password" class="form-control" name="contrasenia" id="contrasenia">
@@ -172,7 +182,9 @@
                <label for="nombre">Fecha de nacimiento</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-calendar"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-calendar"></i>
+                     </div>
                   </div>
                   <input type="text" class="form-control" name="fecNac" id="fecNac" readonly>
                </div>
@@ -182,7 +194,9 @@
                <label for="nombre">Sexo</label>
                <div class="input-group">
                   <div class="input-group-prepend">
-                     <i class="input-group-text fas fa-venus-mars"></i>
+                     <div class="input-group-text">
+                        <i class="fas fa-venus-mars"></i>
+                     </div>
                   </div>
                   <select class="form-control" id="sexo" name="sexo">
                      <option value="-1">Seleccione un sexo</option>
@@ -200,6 +214,8 @@
          </form>
       </div>
    </div>
+
+   <br>
 
    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
@@ -244,7 +260,9 @@
             <p align="justify">Unete a nosotros para obtener las últimas novedades.</p>
             <div class="input-group mb-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text fa fa-paper-plane" id="basic-addon1"></span>
+                    <div class="input-group-text">
+                        <span class="fas fa-paper-plane" id="basic-addon1"></span>
+                    </div>
                 </div>
                 <input type="text" class="form-control" aria-describedby="basic-addon1">
             </div>
