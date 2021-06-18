@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['idUsuario'] = $idUser;
         $_SESSION['correo'] = $usuario["correo"];
         $_SESSION['rol'] = $usuario["id_rol"];
+        $_SESSION['aut'] = true;
 
         //datos personales
         $sqlDatos = "SELECT nombre FROM datos_personales WHERE id_usuario = '$idUser'";
@@ -43,11 +44,11 @@ if (isset($_POST['submit'])) {
         if ($usuario["id_rol"] == 1) {
             //Si se trata de un Escritor
             //echo "Escritor";
-            header('Location: ../escritor/articulo/crear.php');
+            header('Location: ../escritor/misArticulos.php');
         } else {
             //Si se trata de un Lector
             //echo "Lector";
-            //header('Location: ../home/home.php');
+            header('Location: ../home/home.php');
         }
     } else {
         //El usuario no está registrado
@@ -110,13 +111,13 @@ if (isset($_POST['submit'])) {
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -136,10 +137,10 @@ if (isset($_POST['submit'])) {
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
@@ -186,7 +187,7 @@ if (isset($_POST['submit'])) {
                         </button>
                         <br><br>
                         <br>
-                        <p>¿No tienes una cuenta?<a href="#""><i><u style="margin-left:60px">Registrate, es gratis</u></i></a></p>
+                        <p>¿No tienes una cuenta?<a href="../signIn/registro.php"><i><u style="margin-left:60px">Registrate, es gratis</u></i></a></p>
                     </div>
                     <div class="col">
                         <div class=container" style="text-align:right">
@@ -214,7 +215,24 @@ if (isset($_POST['submit'])) {
                 <h6>vibraniumblog@contactme.com</h6>
             </div>
             <div class="col-md-6">
-                <h3>Colaboradores</h3>
+            <h3>Colaboradores</h3>
+                <ul>
+                    <li>
+                        <h5>Butrón Cañada Juan Jesús</h5>
+                    </li>
+                    <li>
+                        <h5>Díaz Rodríguez Andrés Heladio</h5>
+                    </li>
+                    <li>
+                        <h5>Martínez Carrillo Leonardo</h5>
+                    </li>
+                    <li>
+                        <h5>Reyes Montiel Fernando Braulio</h5>
+                    </li>
+                    <li>
+                        <h5>Rodriguez Duarte Brando Ivan</h5>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-3">
                 <h3>Newsletter</h3>
