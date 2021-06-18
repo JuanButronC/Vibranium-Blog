@@ -45,7 +45,7 @@
                     if($estado!=="1"){                                      
                         $resultado=publica_articulo($idArticulo,$idAutor);            
                         if($resultado["estado"]==0){                      
-                            echo "<p>Estimado escritor, su articulo se publico exitosamente.</p>"; 
+                            echo "ok"; 
                             unset($_SESSION["idArticulo"]);          
                         }else{   
                             echo "<p>".$resultado['msgError']."</p>"; 

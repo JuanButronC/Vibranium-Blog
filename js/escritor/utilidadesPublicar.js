@@ -25,7 +25,19 @@ function publicarArticulo(){
         url: "../funciones/publicarArticulo.php",
         dataType: "html",
         success: function (response) {
+            if(response==="ok"){
+                bootBoxConfirm("Atención",
+                "Estimado escritor, su articulo se publico exitosamente.",
+                function (resultado) {
+                    if (resultado) {
+                        var url = "../misArticulos.php";    
+                        $(location).attr('href',url);                      
+                    }
+                }
+            );
+            }else{
             bootBoxAlert("Atención", response);
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             bootBoxAlert("Error", errorThrown);
