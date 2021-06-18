@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start(); 
+?>
 <!doctype html>
 <html lang="es">
 
@@ -36,7 +37,7 @@
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -116,8 +117,6 @@
             echo "Error " . $sql . " :" . mysqli_error($db);
             $_SESSION["estatusComentario"] = "Su comentario no pudo añadirse";
         }
-    } else {
-        $idUsuario = null;
     }
     ?>
 
