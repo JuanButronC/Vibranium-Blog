@@ -22,7 +22,7 @@ $(document).ready(function () {
                     label: "Aceptar",
                     className: 'btn-info',
                     callback: function () {
-                        window.location = "/examenWeb/Vibranium-Blog/modulos/home/home.php";
+                        window.location = "Vibranium-Blog/modulos/escritor/misArticulos.php";
                     }
                 }
             }
