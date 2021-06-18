@@ -183,8 +183,8 @@ if(!empty($_GET["idArticulo"])){
             <div class="card text-left card-second">
               <div class="card-body">
                 <h4 class="card-title">Vista Completa</h4>
-                    <div class="row justify-content-center"">
-                        <div class="col-md-10" id="div-preview-content">  
+                    <div class="row justify-content-center">
+                        <div class="col-md-12" id="div-preview-content">  
                         </div>
                     </div>  
               </div>
