@@ -94,6 +94,11 @@
       if ($conexionBD) {
          mysqli_autocommit($conexionBD, false);
          actualizarDatosPersonales($conexionBD, $idUsuario, $datos, $respuesta);
+
+         if ($respuesta["codError"] == 0) {
+            $_SESSION["nombreUsuario"] = $datos["nombre"];
+         }
+
          $json = json_encode($respuesta);
       }
       else {
