@@ -144,10 +144,10 @@ $resultadoAreas = mysqli_query($conn, $areas);
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
@@ -178,7 +178,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 objetivo es desarrollar teorías físicas basadas en leyes fundamentales, que permitan describir el mayor
                 número posible de fenómenos naturales con el menor número posible de leyes físicas. Estas leyes físicas se
                 expresan en lenguaje matemático, por lo que para entender sin inconvenientes el tratamiento del formalismo
-                teórico de los fenómenos físicos se debe tener una apropiada formación en mate-máticas, en este curso basta
+                teórico de los fenómenos físicos se debe tener una apropiada formación en matemáticas, en este curso basta
                 un nivel básico de matemáticas.</p>
         </div>
         <br>
@@ -194,6 +194,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 <?php
 
                 $contador = 1;
+                
                 while ($mostrar = mysqli_fetch_array($resultado)) {
                     if ($contador == 1) {
                         echo '<div class="carousel-item active">';
@@ -230,10 +231,10 @@ $resultadoAreas = mysqli_query($conn, $areas);
             </div>
 
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" data-slide="prev">
+            <a class="carousel-control-prev" href="#carru" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" data-slide="next">
+            <a class="carousel-control-next" href="#carru" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
         </div>
