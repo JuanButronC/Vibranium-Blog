@@ -24,7 +24,7 @@ if (isset($_POST['eliminar'])) {
         $sql = "DELETE FROM articulos  WHERE id ='$id_borrar'";
         $resultado = mysqli_query($conn, $sql);
         if ($resultado) {
-            header('Location: ../../modulos/escritor/eliminar.php?id=');
+            header('Location: ../../modulos/escritor/articulo/eliminar.php?id=');
         } else {
             echo "Error: " . $sql . ":" . mysqli_error($conn);
         }
@@ -145,13 +145,13 @@ switch ($decada) {
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='../../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
