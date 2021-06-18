@@ -99,7 +99,7 @@ $(document).ready(function() {
 //Switches para recuperar datos en inputs
 switch (opcionDecada) {
     case 0:
-        $("#selectDecada").val("-1");
+        $("#selectDecada").val("0");
         break;
     case 1:
         $("#selectDecada").val("1");
