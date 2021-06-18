@@ -63,17 +63,17 @@
                 </form>
             </div>
         </nav>
-        <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
+        <hr style="background-color:white; margin-bottom: 2px;">
         <nav class="navbar navbar-expand-lg navbar-dark" style="padding-top:0px;">
 
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
@@ -145,7 +145,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="width:100%; height: 300px;">
-                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']); ?>" style="object-fit:fill;width:100%;height:100%;">
+                                <img src="<?php echo 'data:image/jpeg;base64,' . $mostrar['imagen']; ?>" style="object-fit:fill;width:100%;height:100%;">
                             </div>
                         </div>
                     </div>
