@@ -72,7 +72,7 @@ $(document).ready(function() {
                     label: "Aceptar",
                     className: 'btn-info',
                     callback: function() {
-                        //redireccionar a listado de artículos
+                        window.location = "../../../modulos/escritor/misArticulos.php";
                     }
                 }
             }
