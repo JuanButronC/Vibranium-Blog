@@ -44,11 +44,11 @@ if (isset($_POST['submit'])) {
         if ($usuario["id_rol"] == 1) {
             //Si se trata de un Escritor
             //echo "Escritor";
-            header('Location: ../escritor/articulo/crear.php');
+            header('Location: ../escritor/misArticulos.php');
         } else {
             //Si se trata de un Lector
             //echo "Lector";
-            //header('Location: ../home/home.php');
+            header('Location: ../home/home.php');
         }
     } else {
         //El usuario no está registrado
@@ -111,13 +111,13 @@ if (isset($_POST['submit'])) {
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -137,10 +137,10 @@ if (isset($_POST['submit'])) {
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
