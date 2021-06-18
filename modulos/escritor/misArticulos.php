@@ -122,9 +122,11 @@
       </div>
 
       <div class="row justify-content-center">
-        <a href="articulo/crear.php" class="btn" style="background-color: #4b608a;">Crear artículo</a>
+        <a href="articulo/crear.php" class="btn text-white" style="background-color: #4b608a;">Crear artículo</a>
       </div>
    </div>
+
+   <br>
 </div>
 
 <footer>
