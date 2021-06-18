@@ -5,7 +5,7 @@ $usuario = "root";
 $pwd = "";
 $nombreBD = "vibraniumblogdb";
 $conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
-session_start();
+
 if (!$conn) {
     echo 'Error de conexión: ' . mysqli_connect_error();
 }
@@ -24,7 +24,7 @@ if (isset($_POST['eliminar'])) {
         $sql = "DELETE FROM articulos  WHERE id ='$id_borrar'";
         $resultado = mysqli_query($conn, $sql);
         if ($resultado) {
-            header('Location: ../../modulos/escritor/articulo/eliminar.php?id=');
+            header('Location: ../misArticulos.php');
         } else {
             echo "Error: " . $sql . ":" . mysqli_error($conn);
         }
@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
         $sql = "SELECT articulos.titulo, articulos.estatus, articulos.siglo, 
                         articulos.lugar, articulos.cientificos, 
                         articulos.premios,areas.nombre, articulos.decada, 
-                        articulos.contenido 
+                        articulos.contenido, articulos.imagen
                         FROM articulos INNER JOIN areas ON articulos.id_area=areas.id where articulos.id='$id'";
     }
 
@@ -102,7 +102,7 @@ switch ($decada) {
 
 <head>
     <title>Vibranium Blog</title>
-    <link rel="icon" type="image/png" href="../../img/icono.png" />
+    <link rel="icon" type="image/png" href="../../../img/icono.png" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -110,15 +110,15 @@ switch ($decada) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.css">
-    <link rel="stylesheet" href="../../css/templates.css">
-    <link rel="stylesheet" href="../../css/eliminar.css">
+    <link rel="stylesheet" href="../../../css/templates.css">
+    <link rel="stylesheet" href="../../../css/eliminar.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#"><img src="../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
+            <a class="navbar-brand" href="#"><img src="../../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -136,7 +136,7 @@ switch ($decada) {
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -181,7 +181,7 @@ switch ($decada) {
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='../../escritor/misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
@@ -189,8 +189,9 @@ switch ($decada) {
             </div>
         </nav>
     </header>
+
     <div style="padding: 3%;">
-        <a href="../home/home.php" class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fa fa-chevron-left"></i> Regresar</a>
+        <a href="../misArticulos.php" class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fa fa-chevron-left"></i> Regresar</a>
         <br>
         <br>
         <div class="text-center">
@@ -213,6 +214,21 @@ switch ($decada) {
             </b></p>
         <div class="row">
             <div class="offset-md-1 col-md-10">
+                <div id="demo2" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                    </ul>
+
+                    <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
+                        <div class="carousel-item active">
+                            <?php
+                            echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . $articulo['imagen'] . '" alt="Card image cap" height="300px" width="100%">';
+                            ?>
+                        </div>
+
+                    </div>
+                </div>
+                <br>
                 <h3><b>Detalles</b></h3>
                 <div class="card border-info">
                     <div class="card-body">
@@ -275,9 +291,9 @@ switch ($decada) {
                 <h3>Contáctanos</h3>
                 <h5>Redes Sociales</h5>
                 <p>
-                    <img src="../../img/facebook.png" alt="facebook" height="50px" width="50px">
-                    <img src="../../img/instagram.png" alt="instagram" height="50px" width="50px">
-                    <img src="../../img/youtube.png" alt="youtube" height="50px" width="50px">
+                    <img src="../../../img/facebook.png" alt="facebook" height="50px" width="50px">
+                    <img src="../../../img/instagram.png" alt="instagram" height="50px" width="50px">
+                    <img src="../../../img/youtube.png" alt="youtube" height="50px" width="50px">
                 </p>
                 <h5>Email</h5>
                 <h6>vibraniumblog@contactme.com</h6>
