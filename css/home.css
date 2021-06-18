@@ -1,0 +1,30 @@
+#contenedorPrincipal{
+    padding: 3%;
+}
+
+#intro{
+    padding-left: 3%; 
+    padding-right: 3%;
+}
+
+#descripcion{
+    font-size: 18px; 
+    text-align: justify;
+}
+
+#detalles{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+ .pad-5{
+    padding-left: 5%; padding-right: 5%;   
+ }
+
+ .resumen{
+    font-size: 18px;
+ }
+
+ .text-muted{
+    font-size: 16px;
+ }
