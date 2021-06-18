@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="undefined" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/templates.css">
 
 
@@ -26,6 +26,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/js/all.min.js"></script>
     <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
 
 
@@ -35,7 +36,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#"><img src="img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
+            <a class="navbar-brand" href="#"><img src="../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -63,14 +64,14 @@
 
                                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                         echo "
-                                            <a id='btnDatosPersonales' class='dropdown-item' href='modulos/datosPersonales/datosPersonales.php'>Datos personales</a>
-                                            <a id='btnLogOut' class='dropdown-item' href='modulos/login/cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a id='btnDatosPersonales' class='dropdown-item' href='../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a id='btnLogOut' class='dropdown-item' href='../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                     }
                                     else {
                                         echo "
-                                            <a id='btnLogin' class='dropdown-item' href='modulos/login/login.php'>Iniciar sesión</a>
-                                            <a id='btnSignUp' class='dropdown-item' href='modulos/singIn/registro.php'>Registrarse</a>
+                                            <a id='btnLogin' class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
+                                            <a id='btnSignUp' class='dropdown-item' href='../singIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -87,17 +88,17 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a id="btnInicio" class="nav-link">Inicio</a>
+                        <a id="btnInicio" class="nav-link" href="../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a id="btnArticulos" class="nav-link" href="modulos/home/vistas/articulos.php">Artículos</a>
+                        <a id="btnArticulos" class="nav-link" href="../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a id='btnMisArticulos' class='nav-link' href='modulos/escritor/misArticulos.php'>Mis artículos</a>
+                                <a id='btnMisArticulos' class='nav-link' href='../escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
@@ -128,9 +129,9 @@
             <h3>Contáctanos</h3>
             <h5>Redes Sociales</h5>
             <p>
-                <i class="fas fa-facebook-square fa-2x"></i>
-                <i class="fas fa-instragram fa-2x"></i>
-                <i class="fas fa-youtube fa-2x"></i>
+               <i class="fab fa-facebook-square fa-2x"></i>
+               <i class="fab fa-instagram fa-2x"></i>
+               <i class="fab fa-youtube fa-2x"></i>
             </p>
             <h5>Email</h5>
             <h6>vibraniumblog@contactme.com</h6>
@@ -160,7 +161,9 @@
             <p align="justify">Unete a nosotros para obtener las últimas novedades.</p>
             <div class="input-group mb-4">
                 <div class="input-group-prepend">
-                    <span class="input-group-text fa fa-paper-plane" id="basic-addon1"></span>
+                  <div class="input-group-text">
+                     <span class="fas fa-paper-plane" id="basic-addon1"></span>
+                  </div>
                 </div>
                 <input type="text" class="form-control" aria-describedby="basic-addon1">
             </div>

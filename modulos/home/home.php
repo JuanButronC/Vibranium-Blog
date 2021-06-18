@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servidor = "localhost";
 $usuario = "root";
 $pwd = "";
@@ -15,6 +16,7 @@ $sql = "SELECT articulos.id,articulos.titulo, articulos.siglo,
   FROM articulos INNER JOIN areas ON articulos.id_area=areas.id
   JOIN usuarios ON articulos.id_escritor=usuarios.id
   JOIN datos_personales ON usuarios.id = datos_personales.id_usuario
+  WHERE articulos.estatus = 1
    LIMIT 4";
 
 $resultado = mysqli_query($conn, $sql);
@@ -62,11 +64,11 @@ $queryArticulos = "SELECT articulos.id,articulos.titulo, articulos.resumen
 $resultadoArticulos = mysqli_query($conn, $queryArticulos);
 
 $queryArticulos2 = "SELECT articulos.id,articulos.titulo, articulos.resumen
-  FROM articulos order by 1 desc LIMIT 2,2";
+  FROM articulos WHERE articulos.estatus = 1 order by 1 desc LIMIT 2,2";
 $resultadoArticulos2 = mysqli_query($conn, $queryArticulos2);
 
 
-$areas = "SELECT areas.id,areas.nombre FROM areas order by 1 desc LIMIT 4";
+$areas = "SELECT areas.id,areas.nombre FROM areas WHERE articulos.estatus = 1 order by 1 desc LIMIT 4";
 $resultadoAreas = mysqli_query($conn, $areas);
 ?>
 
@@ -110,7 +112,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido ". $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>

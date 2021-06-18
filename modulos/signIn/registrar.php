@@ -5,7 +5,7 @@
    }
 
    function validaContrasenia($contrasenia) {
-      return preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9.]{6,}$/", $contrasenia);
+      return preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{6,}$/", $contrasenia);
    }
 
    function validaFecha($fecha) {
@@ -54,7 +54,7 @@
    function obtenConexionBD() {
       $servidorBD = "localhost";
       $usuarioBD = "root";
-      $contraseniaBD = "root";
+      $contraseniaBD = "";
       $nombreBD = "VibraniumBlogDB";
 
       $conexion = mysqli_connect($servidorBD, $usuarioBD, $contraseniaBD, $nombreBD);
