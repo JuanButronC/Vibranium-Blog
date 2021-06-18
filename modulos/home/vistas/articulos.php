@@ -11,7 +11,7 @@ if(!empty($_GET["siglo"])){
         $error=true;
     }else{
         $siglo=limpiaEntrada($_GET["siglo"]);
-
+        echo $siglo;
     }             
 }
 
@@ -68,6 +68,7 @@ if(!empty($_GET["decada"])){
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
                 </ul>
 
                 <form class="form-inline my-2 my-lg-0">
@@ -85,13 +86,13 @@ if(!empty($_GET["decada"])){
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='.././datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../../singIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -111,7 +112,7 @@ if(!empty($_GET["decada"])){
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="articulos.php">Artículos</a>
@@ -158,7 +159,7 @@ if(!empty($_GET["decada"])){
     <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav" >
             <li class='nav-item'>
-                <a class='nav-link text-white navArea' href='#' id='nav-todas'>Todas las areas</a>
+                <a class='nav-link text-white' href='#' id='nav-todas'>Todas las areas</a>
             </li>    
              
         </ul>
@@ -348,7 +349,24 @@ if(!empty($_GET["decada"])){
                 <h6>vibraniumblog@contactme.com</h6>
             </div>
             <div class="col-md-6">
-                <h3>Colaboradores</h3>
+            <h3>Colaboradores</h3>
+                <ul>
+                    <li>
+                        <h5>Butrón Cañada Juan Jesús</h5>
+                    </li>
+                    <li>
+                        <h5>Díaz Rodríguez Andrés Heladio</h5>
+                    </li>
+                    <li>
+                        <h5>Martínez Carrillo Leonardo</h5>
+                    </li>
+                    <li>
+                        <h5>Reyes Montiel Fernando Braulio</h5>
+                    </li>
+                    <li>
+                        <h5>Rodriguez Duarte Brando Ivan</h5>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-3">
                 <h3>Newsletter</h3>
