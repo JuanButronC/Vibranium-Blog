@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
         if ($usuario["id_rol"] == 1) {
             //Si se trata de un Escritor
             //echo "Escritor";
-            //header('Location: ');
+            header('Location: ../escritor/articulo/crear.php');
         } else {
             //Si se trata de un Lector
             //echo "Lector";
