@@ -71,7 +71,7 @@
                                     else {
                                         echo "
                                             <a id='btnLogin' class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
-                                            <a id='btnSignUp' class='dropdown-item' href='../singIn/registro.php'>Registrarse</a>
+                                            <a id='btnSignUp' class='dropdown-item' href='registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
