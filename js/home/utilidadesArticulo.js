@@ -503,6 +503,9 @@ function bootBoxAlert(titulo, mensaje) {
 function get_decada_label(decada) {
     var decadaLabel = "";
     switch (decada) {
+        case "0":
+            decadaLabel = "00's";
+            break;
         case "1":
             decadaLabel = "10's";
             break;
