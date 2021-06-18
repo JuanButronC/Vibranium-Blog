@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
             '<div class="alert alert-success">
                 <strong>¡Éxito!</strong> Artículo creado satisfactoriamente.
             </div>';
-            //header('Location: ');
+            header('Location: ../misArticulos.php');
         }
         else
         {
@@ -109,8 +109,8 @@ if (isset($_POST['submit'])) {
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                    <a class='dropdown-item' href='../../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                    <a class='dropdown-item' href='../../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
@@ -134,18 +134,11 @@ if (isset($_POST['submit'])) {
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
-                    </li>
-
                     <?php
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../../escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
@@ -286,7 +279,24 @@ if (isset($_POST['submit'])) {
                 <h6>vibraniumblog@contactme.com</h6>
             </div>
             <div class="col-md-6">
-                <h3>Colaboradores</h3>
+            <h3>Colaboradores</h3>
+                <ul>
+                    <li>
+                        <h5>Butrón Cañada Juan Jesús</h5>
+                    </li>
+                    <li>
+                        <h5>Díaz Rodríguez Andrés Heladio</h5>
+                    </li>
+                    <li>
+                        <h5>Martínez Carrillo Leonardo</h5>
+                    </li>
+                    <li>
+                        <h5>Reyes Montiel Fernando Braulio</h5>
+                    </li>
+                    <li>
+                        <h5>Rodriguez Duarte Brando Ivan</h5>
+                    </li>
+                </ul>
             </div>
             <div class="col-md-3">
                 <h3>Newsletter</h3>
