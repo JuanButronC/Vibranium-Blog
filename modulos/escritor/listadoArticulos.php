@@ -81,7 +81,7 @@
          }
       }
       else {
-         echo "
+         $tabla .= "
             <tr>
                <td colspan='8' class='text-center'>Sin resultados</td>
             </tr>
