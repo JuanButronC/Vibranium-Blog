@@ -15,7 +15,7 @@ $(document).ready(function() {
                         label: "Registrarse o iniciar sesión",
                         className: 'btn-info',
                         callback: function(e) {
-                            window.location = "../../../../../modulos/login/login.php";
+                            window.location = "../../../../modulos/login/login.php";
                         }
                     }
                 }
