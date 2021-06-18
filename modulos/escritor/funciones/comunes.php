@@ -69,6 +69,7 @@ function get_conn(){
     }
 
     function publica_articulo($idArticulo,$idAutor){
+        date_default_timezone_set("America/Mexico_City");
         $fechaAct = date("Y/m/d");
         $sql="UPDATE articulos 
                 SET articulos.estatus=1,
