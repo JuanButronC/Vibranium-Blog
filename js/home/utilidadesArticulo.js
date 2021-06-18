@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("#div-main-articulos").on("click", ".card-articulo-img ", function (e) {
         
         var id = $(this).parent().attr("id-articulo");
-        var url = "/Pruebas//Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        var url = "../../escritor/articulo/individual.php?idArticulo="+id;    
         $(location).attr('href',url);
 
     });
@@ -29,7 +29,7 @@ $(document).ready(function () {
     $("#div-main-articulos").on("click", ".card-articulo-body", function (e) {
         
         var id = $(this).parent().attr("id-articulo");
-        var url = "/Pruebas//Vibranium-Blog/modulos/escritor/articulo/individual.php?idArticulo="+id;    
+        var url = "../../escritor/articulo/individual.php?idArticulo="+id;    
         $(location).attr('href',url);
 
     });
