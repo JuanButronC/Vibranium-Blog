@@ -98,7 +98,7 @@ function limpiaEntrada($input){
       
         $sql="SELECT 
                      USUARIOS.id as id,
-                     DATOS_PERSONALES.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor
                 FROM  USUARIOS 
                 INNER JOIN DATOS_PERSONALES ON
                             DATOS_PERSONALES.id_usuario=USUARIOS.id
