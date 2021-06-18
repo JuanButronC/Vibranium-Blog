@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['idUsuario'] = $idUser;
         $_SESSION['correo'] = $usuario["correo"];
         $_SESSION['rol'] = $usuario["id_rol"];
+        $_SESSION['aut'] = true;
 
         //datos personales
         $sqlDatos = "SELECT nombre FROM datos_personales WHERE id_usuario = '$idUser'";
