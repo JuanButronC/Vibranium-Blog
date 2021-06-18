@@ -1,4 +1,4 @@
-<<?php 
+<?php 
 
 function limpiaEntrada($input){
     $input=trim($input);
@@ -67,41 +67,41 @@ function limpiaEntrada($input){
 
     function get_articulos(){
         
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.titulo as titulo,
-                     ARTICULOS.resumen as resumen,
-                     ARTICULOS.siglo as siglo,
-                     ARTICULOS.decada as decada,
-                     ARTICULOS.cientificos as cientificos,
-                     DATOS_PERSONALES.nombre as autor,
-                     ARTICULOS.id_area as id_area,
-                     ARTICULOS.imagen as imagen,
-                     AREAS.nombre as area
-                FROM ARTICULOS 
-                      INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
-                    WHERE ARTICULOS.estatus=1";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.titulo as titulo,
+                     articulos.resumen as resumen,
+                     articulos.siglo as siglo,
+                     articulos.decada as decada,
+                     articulos.cientificos as cientificos,
+                     datos_personales.nombre as autor,
+                     articulos.id_area as id_area,
+                     articulos.imagen as imagen,
+                     areas.nombre as area
+                FROM articulos 
+                      INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                     INNER JOIN areas ON
+                            areas.id=articulos.id_area
+                    WHERE articulos.estatus=1";
 
         return ejecuta_consulta($sql);
     }
 
     function get_areas(){
       
-        $sql="SELECT AREAS.id as id,
-                     AREAS.nombre as area
-                FROM AREAS";
+        $sql="SELECT areas.id as id,
+                     areas.nombre as area
+                FROM areas";
         return ejecuta_consulta($sql);
     }
     function get_autores_dest(){
       
         $sql="SELECT 
                      USUARIOS.id as id,
-                     DATOS_PERSONALES.nombre as autor
+                     datos_personales.nombre as autor
                 FROM  USUARIOS 
-                INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=USUARIOS.id
+                INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=USUARIOS.id
                 WHERE USUARIOS.id_rol=1
                 LIMIT 5";
         return ejecuta_consulta($sql);
@@ -110,47 +110,47 @@ function limpiaEntrada($input){
 
     function get_coincidencias($cadena){
        
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.titulo as titulo,
-                     ARTICULOS.resumen as resumen,
-                     ARTICULOS.siglo as siglo,
-                     ARTICULOS.decada as decada,
-                     ARTICULOS.cientificos as cientificos,
-                     DATOS_PERSONALES.nombre as autor,
-                     ARTICULOS.imagen as imagen,
-                     ARTICULOS.id_area as id_area,
-                     AREAS.nombre as area
-                FROM ARTICULOS 
-                INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
-                WHERE ARTICULOS.titulo LIKE '%$cadena%'
-                AND ARTICULOS.estatus=1";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.titulo as titulo,
+                     articulos.resumen as resumen,
+                     articulos.siglo as siglo,
+                     articulos.decada as decada,
+                     articulos.cientificos as cientificos,
+                     datos_personales.nombre as autor,
+                     articulos.imagen as imagen,
+                     articulos.id_area as id_area,
+                     areas.nombre as area
+                FROM articulos 
+                INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                     INNER JOIN areas ON
+                            areas.id=articulos.id_area
+                WHERE articulos.titulo LIKE '%$cadena%'
+                AND articulos.estatus=1";
 
               return ejecuta_consulta($sql);
     }
 
     function get_coincidencias_filtros($filtros_siglo,$filtros_decada){
      
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.titulo as titulo,
-                     ARTICULOS.resumen as resumen,
-                     ARTICULOS.siglo as siglo,
-                     ARTICULOS.decada as decada,
-                     ARTICULOS.cientificos as cientificos,
-                     DATOS_PERSONALES.nombre as autor,
-                     ARTICULOS.imagen as imagen,
-                     ARTICULOS.id_area as id_area,
-                     AREAS.nombre as area
-                FROM ARTICULOS 
-                INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
-                WHERE ARTICULOS.siglo IN ($filtros_siglo) 
-                AND ARTICULOS.decada IN ($filtros_decada)
-                AND ARTICULOS.estatus=1";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.titulo as titulo,
+                     articulos.resumen as resumen,
+                     articulos.siglo as siglo,
+                     articulos.decada as decada,
+                     articulos.cientificos as cientificos,
+                     datos_personales.nombre as autor,
+                     articulos.imagen as imagen,
+                     articulos.id_area as id_area,
+                     areas.nombre as area
+                FROM articulos 
+                INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                     INNER JOIN areas ON
+                            areas.id=articulos.id_area
+                WHERE articulos.siglo IN ($filtros_siglo) 
+                AND articulos.decada IN ($filtros_decada)
+                AND articulos.estatus=1";
 
           return ejecuta_consulta($sql);
     }
@@ -159,69 +159,69 @@ function limpiaEntrada($input){
 
     function get_coincidencias_area($idArea){
        
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.titulo as titulo,
-                     ARTICULOS.resumen as resumen,
-                     ARTICULOS.siglo as siglo,
-                     ARTICULOS.decada as decada,
-                     ARTICULOS.cientificos as cientificos,
-                     DATOS_PERSONALES.nombre as autor,
-                     ARTICULOS.imagen as imagen,
-                     ARTICULOS.id_area as id_area,
-                     AREAS.nombre as area
-                FROM ARTICULOS 
-                INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                     INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
-                     WHERE ARTICULOS.id_area=$idArea
-                     AND ARTICULOS.estatus=1";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.titulo as titulo,
+                     articulos.resumen as resumen,
+                     articulos.siglo as siglo,
+                     articulos.decada as decada,
+                     articulos.cientificos as cientificos,
+                     datos_personales.nombre as autor,
+                     articulos.imagen as imagen,
+                     articulos.id_area as id_area,
+                     areas.nombre as area
+                FROM articulos 
+                INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                     INNER JOIN areas ON
+                            areas.id=articulos.id_area
+                     WHERE articulos.id_area=$idArea
+                     AND articulos.estatus=1";
 
           return ejecuta_consulta($sql);
     }
 
     function get_coincidencias_autor($idAutor){
    
-      $sql="SELECT ARTICULOS.id as id_articulo,
-                   ARTICULOS.titulo as titulo,
-                   ARTICULOS.resumen as resumen,
-                   ARTICULOS.siglo as siglo,
-                   ARTICULOS.decada as decada,
-                   ARTICULOS.cientificos as cientificos,
-                   DATOS_PERSONALES.nombre as autor,
-                   ARTICULOS.imagen as imagen,
-                   ARTICULOS.id_area as id_area,
-                   AREAS.nombre as area
-              FROM ARTICULOS 
-              INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                   INNER JOIN AREAS ON
-                          AREAS.id=ARTICULOS.id_area
-                   WHERE ARTICULOS.id_escritor=$idAutor
-                   AND ARTICULOS.estatus=1";
+      $sql="SELECT articulos.id as id_articulo,
+                   articulos.titulo as titulo,
+                   articulos.resumen as resumen,
+                   articulos.siglo as siglo,
+                   articulos.decada as decada,
+                   articulos.cientificos as cientificos,
+                   datos_personales.nombre as autor,
+                   articulos.imagen as imagen,
+                   articulos.id_area as id_area,
+                   areas.nombre as area
+              FROM articulos 
+              INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                   INNER JOIN areas ON
+                          areas.id=articulos.id_area
+                   WHERE articulos.id_escritor=$idAutor
+                   AND articulos.estatus=1";
 
       return ejecuta_consulta($sql);
   }
 
   function get_coincidencias_siglos($filtros_siglo){
     
-    $sql="SELECT ARTICULOS.id as id_articulo,
-                 ARTICULOS.titulo as titulo,
-                 ARTICULOS.resumen as resumen,
-                 ARTICULOS.siglo as siglo,
-                 ARTICULOS.decada as decada,
-                 ARTICULOS.cientificos as cientificos,
-                 DATOS_PERSONALES.nombre as autor,
-                 ARTICULOS.imagen as imagen,
-                 ARTICULOS.id_area as id_area,
-                 AREAS.nombre as area
-            FROM ARTICULOS 
-            INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-                 INNER JOIN AREAS ON
-                        AREAS.id=ARTICULOS.id_area
-            WHERE ARTICULOS.siglo IN ($filtros_siglo)
-            AND ARTICULOS.estatus=1";
+    $sql="SELECT articulos.id as id_articulo,
+                 articulos.titulo as titulo,
+                 articulos.resumen as resumen,
+                 articulos.siglo as siglo,
+                 articulos.decada as decada,
+                 articulos.cientificos as cientificos,
+                 datos_personales.nombre as autor,
+                 articulos.imagen as imagen,
+                 articulos.id_area as id_area,
+                 areas.nombre as area
+            FROM articulos 
+            INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+                 INNER JOIN areas ON
+                        areas.id=articulos.id_area
+            WHERE articulos.siglo IN ($filtros_siglo)
+            AND articulos.estatus=1";
 
       return ejecuta_consulta($sql);
 }
@@ -229,23 +229,23 @@ function limpiaEntrada($input){
 
 function get_coincidencias_decadas($filtros_decada){
 
-  $sql="SELECT ARTICULOS.id as id_articulo,
-               ARTICULOS.titulo as titulo,
-               ARTICULOS.resumen as resumen,
-               ARTICULOS.siglo as siglo,
-               ARTICULOS.decada as decada,
-               ARTICULOS.cientificos as cientificos,
-               DATOS_PERSONALES.nombre as autor,
-               ARTICULOS.imagen as imagen,
-               ARTICULOS.id_area as id_area,
-               AREAS.nombre as area
-          FROM ARTICULOS 
-          INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-               INNER JOIN AREAS ON
-                      AREAS.id=ARTICULOS.id_area
-          WHERE  ARTICULOS.decada IN ($filtros_decada)
-          AND    ARTICULOS.estatus=1";
+  $sql="SELECT articulos.id as id_articulo,
+               articulos.titulo as titulo,
+               articulos.resumen as resumen,
+               articulos.siglo as siglo,
+               articulos.decada as decada,
+               articulos.cientificos as cientificos,
+               datos_personales.nombre as autor,
+               articulos.imagen as imagen,
+               articulos.id_area as id_area,
+               areas.nombre as area
+          FROM articulos 
+          INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+               INNER JOIN areas ON
+                      areas.id=articulos.id_area
+          WHERE  articulos.decada IN ($filtros_decada)
+          AND    articulos.estatus=1";
 
   return ejecuta_consulta($sql);
 }
@@ -253,69 +253,69 @@ function get_coincidencias_decadas($filtros_decada){
 
 function get_coincidencias_siglo($siglo){
 
-  $sql="SELECT ARTICULOS.id as id_articulo,
-               ARTICULOS.titulo as titulo,
-               ARTICULOS.resumen as resumen,
-               ARTICULOS.siglo as siglo,
-               ARTICULOS.decada as decada,
-               ARTICULOS.cientificos as cientificos,
-               DATOS_PERSONALES.nombre as autor,
-               ARTICULOS.imagen as imagen,
-               ARTICULOS.id_area as id_area,
-               AREAS.nombre as area
-          FROM ARTICULOS 
-          INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-               INNER JOIN AREAS ON
-                      AREAS.id=ARTICULOS.id_area
-          WHERE ARTICULOS.siglo = $siglo
-          AND ARTICULOS.estatus=1";
+  $sql="SELECT articulos.id as id_articulo,
+               articulos.titulo as titulo,
+               articulos.resumen as resumen,
+               articulos.siglo as siglo,
+               articulos.decada as decada,
+               articulos.cientificos as cientificos,
+               datos_personales.nombre as autor,
+               articulos.imagen as imagen,
+               articulos.id_area as id_area,
+               areas.nombre as area
+          FROM articulos 
+          INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+               INNER JOIN areas ON
+                      areas.id=articulos.id_area
+          WHERE articulos.siglo = $siglo
+          AND articulos.estatus=1";
   return ejecuta_consulta($sql);
 }
 
 
 function get_coincidencias_decada($decada){
   
-  $sql="SELECT ARTICULOS.id as id_articulo,
-              ARTICULOS.titulo as titulo,
-              ARTICULOS.resumen as resumen,
-              ARTICULOS.siglo as siglo,
-              ARTICULOS.decada as decada,
-              ARTICULOS.cientificos as cientificos,
-              DATOS_PERSONALES.nombre as autor,
-              ARTICULOS.imagen as imagen,
-              ARTICULOS.id_area as id_area,
-              AREAS.nombre as area
-          FROM ARTICULOS 
-          INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-              INNER JOIN AREAS ON
-                      AREAS.id=ARTICULOS.id_area
-          WHERE  ARTICULOS.decada = $decada
-          AND ARTICULOS.estatus=1";
+  $sql="SELECT articulos.id as id_articulo,
+              articulos.titulo as titulo,
+              articulos.resumen as resumen,
+              articulos.siglo as siglo,
+              articulos.decada as decada,
+              articulos.cientificos as cientificos,
+              datos_personales.nombre as autor,
+              articulos.imagen as imagen,
+              articulos.id_area as id_area,
+              areas.nombre as area
+          FROM articulos 
+          INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+              INNER JOIN areas ON
+                      areas.id=articulos.id_area
+          WHERE  articulos.decada = $decada
+          AND articulos.estatus=1";
 
   return ejecuta_consulta($sql);
 }
 
 function get_coincidencias_cientificos($cadena){
 
-  $sql="SELECT ARTICULOS.id as id_articulo,
-               ARTICULOS.titulo as titulo,
-               ARTICULOS.resumen as resumen,
-               ARTICULOS.siglo as siglo,
-               ARTICULOS.decada as decada,
-               ARTICULOS.cientificos as cientificos,
-               DATOS_PERSONALES.nombre as autor,
-               ARTICULOS.imagen as imagen,
-               ARTICULOS.id_area as id_area,
-               AREAS.nombre as area
-          FROM ARTICULOS 
-          INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
-               INNER JOIN AREAS ON
-                      AREAS.id=ARTICULOS.id_area
-          WHERE ARTICULOS.cientificos = '$cadena'
-          AND ARTICULOS.estatus=1";
+  $sql="SELECT articulos.id as id_articulo,
+               articulos.titulo as titulo,
+               articulos.resumen as resumen,
+               articulos.siglo as siglo,
+               articulos.decada as decada,
+               articulos.cientificos as cientificos,
+               datos_personales.nombre as autor,
+               articulos.imagen as imagen,
+               articulos.id_area as id_area,
+               areas.nombre as area
+          FROM articulos 
+          INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
+               INNER JOIN areas ON
+                      areas.id=articulos.id_area
+          WHERE articulos.cientificos = '$cadena'
+          AND articulos.estatus=1";
 
   return ejecuta_consulta($sql);
 }

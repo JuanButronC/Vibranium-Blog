@@ -1,4 +1,4 @@
-?php
+<?php
 session_start();
 include '../funciones/comunes.php';
 $error=false;
@@ -10,7 +10,8 @@ if(!empty($_GET["idArticulo"])){
         $msgErr="Error al recuperar el artículo: <br>El id debe ser númerico";
         $error=true;
     }else{
-        $idArticulo=limpiaEntrada($_GET["idArticulo"]);
+        $_SESSION["idArticulo"]=limpiaEntrada($_GET["idArticulo"]);
+
     }             
 }else{
     $msgErr="Error al recuperar el artículo: <br>El id es requerido";
@@ -67,7 +68,7 @@ if(!empty($_GET["idArticulo"])){
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -138,8 +139,7 @@ if(!empty($_GET["idArticulo"])){
         </div>
     </div>
 
-<?php }else{ ?>
-<div id="div-data-get" get-data-id-articulo="<?php echo $idArticulo?>" ></div>       
+<?php }else{ ?>    
 
 <div class="container" style="margin-bottom:25px">
 
@@ -183,8 +183,8 @@ if(!empty($_GET["idArticulo"])){
             <div class="card text-left card-second">
               <div class="card-body">
                 <h4 class="card-title">Vista Completa</h4>
-                    <div class="row justify-content-center"">
-                        <div class="col-md-10" id="div-preview-content">  
+                    <div class="row justify-content-center">
+                        <div class="col-md-12" id="div-preview-content">  
                         </div>
                     </div>  
               </div>

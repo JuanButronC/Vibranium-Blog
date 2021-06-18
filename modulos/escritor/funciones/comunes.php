@@ -66,55 +66,56 @@ function get_conn(){
     }
 
     function publica_articulo($idArticulo,$idAutor){
-        
-        $sql="UPDATE ARTICULOS 
-                SET ARTICULOS.estatus=1
-                WHERE ARTICULOS.id=$idArticulo
-                AND ARTICULOS.id_escritor=$idAutor";
+        $fechaAct = date("Y/m/d");
+        $sql="UPDATE articulos 
+                SET articulos.estatus=1,
+                articulos.fecha_publicacion='$fechaAct' 
+                WHERE articulos.id=$idArticulo
+                AND articulos.id_escritor=$idAutor";
 
         return ejecuta_consulta_update($sql);
     }
 
     function get_content_articulo($idArticulo){
         
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.contenido as contenido                 
-                FROM ARTICULOS 
-                WHERE ARTICULOS.id=$idArticulo";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.contenido as contenido                 
+                FROM articulos 
+                WHERE articulos.id=$idArticulo";
 
         return ejecuta_consulta($sql);
     }
 
     function get_preview_articulo($idArticulo){
         
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.titulo as titulo,
-                     ARTICULOS.resumen as resumen,
-                     ARTICULOS.siglo as siglo,
-                     ARTICULOS.decada as decada,
-                     ARTICULOS.cientificos as cientificos,
-                     DATOS_PERSONALES.nombre as autor,
-                     ARTICULOS.id_area as id_area,
-                     ARTICULOS.imagen as imagen,
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.titulo as titulo,
+                     articulos.resumen as resumen,
+                     articulos.siglo as siglo,
+                     articulos.decada as decada,
+                     articulos.cientificos as cientificos,
+                     datos_personales.nombre as autor,
+                     articulos.id_area as id_area,
+                     articulos.imagen as imagen,
                      AREAS.nombre as area                 
 
-                FROM ARTICULOS 
-                      INNER JOIN DATOS_PERSONALES ON
-                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
+                FROM articulos 
+                      INNER JOIN datos_personales ON
+                            datos_personales.id_usuario=articulos.id_escritor
                      INNER JOIN AREAS ON
-                            AREAS.id=ARTICULOS.id_area
-                WHERE ARTICULOS.id=$idArticulo";
+                            AREAS.id=articulos.id_area
+                WHERE articulos.id=$idArticulo";
 
         return ejecuta_consulta($sql);
     }
 
     function get_data_articulo($idArticulo){
         
-        $sql="SELECT ARTICULOS.id as id_articulo,
-                     ARTICULOS.id_escritor as id_autor,
-                     ARTICULOS.estatus as   estado      
-                FROM ARTICULOS 
-                WHERE ARTICULOS.id=$idArticulo";
+        $sql="SELECT articulos.id as id_articulo,
+                     articulos.id_escritor as id_autor,
+                     articulos.estatus as   estado      
+                FROM articulos 
+                WHERE articulos.id=$idArticulo";
 
         return ejecuta_consulta($sql);
     }
