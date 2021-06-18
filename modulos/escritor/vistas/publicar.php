@@ -198,7 +198,7 @@ if(!empty($_GET["idArticulo"])){
 <?php } ?>
 
 <footer>
-        <div class="row">
+<div class="row">
             <div class="col-md-3">
                 <h3>Contáctanos</h3>
                 <h5>Redes Sociales</h5>
@@ -229,7 +229,6 @@ if(!empty($_GET["idArticulo"])){
                         <h5>Rodriguez Duarte Brando Ivan</h5>
                     </li>
                 </ul>
-            </div>
             </div>
             <div class="col-md-3">
                 <h3>Newsletter</h3>

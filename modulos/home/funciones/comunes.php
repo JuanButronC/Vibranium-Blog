@@ -29,6 +29,9 @@ function limpiaEntrada($input){
     function get_decada_label($decada){
         $decadaLabel="";
         switch($decada){
+            case "0":
+                $decadaLabel="00's";
+            break;
             case "1":
                 $decadaLabel="10's";
             break;
