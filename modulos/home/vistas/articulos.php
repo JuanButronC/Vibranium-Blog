@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../funciones/comunes.php';
 $error=false;
 $msgErr="";
@@ -77,7 +78,7 @@ if(!empty($_GET["decada"])){
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido ".$_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -122,7 +123,7 @@ if(!empty($_GET["decada"])){
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../../escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>

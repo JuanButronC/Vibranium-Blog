@@ -12,45 +12,33 @@ function publicar() {
         "Estima escritor, una vez publicado su articulo no podrá editarlo ni eliminarlo <br> ¿Desea continuar?",
         function (resultado) {
             if (resultado) {
-                var data_get = $("#div-data-get").attr("get-data-id-articulo");
-                data_get = data_get.trim();
-                const FORMAT = /^([0-9]){1,2}$/;
-                if (data_get !== "") {
-                    if (FORMAT.test(data_get)) {
-                        $.ajax({
-                            type: "GET",
-                            url: "../funciones/publicarArticulo.php",
-                            dataType: "html",
-                            data:{idArticulo:data_get},
-                            success: function (response) {
-                                bootBoxAlert("Atención", response);
-                            },
-                            error: function (jqXHR, textStatus, errorThrown) {
-                                bootBoxAlert("Error", errorThrown);
-
-                            }
-                        });
-                    }
-                }
+                publicarArticulo();                       
             }
         }
     );
 
 }
 
+function publicarArticulo(){
+    $.ajax({
+        type: "GET",
+        url: "../funciones/publicarArticulo.php",
+        dataType: "html",
+        success: function (response) {
+            bootBoxAlert("Atención", response);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            bootBoxAlert("Error", errorThrown);
 
+        }
+    });
+}
 
-function getArticulo() {
-    var data_get = $("#div-data-get").attr("get-data-id-articulo");
-    data_get = data_get.trim();
-    const FORMAT = /^([0-9]){1,2}$/;
-    if (data_get !== "") {
-        if (FORMAT.test(data_get)) {
+function getArticulo() {    
             $.ajax({
                 type: "GET",
                 url: "../funciones/getPreviewResumida.php",
                 dataType: "html",
-                data:{idArticulo:data_get},
                 success: function (response) {
                     $("#div-preview-resum").html(response);
                 },
@@ -63,7 +51,6 @@ function getArticulo() {
                 type: "GET",
                 url: "../funciones/getPreviewCompleta.php",
                 dataType: "html",
-                data:{idArticulo:data_get},
                 success: function (response) {
                     $("#div-preview-content").html(response);
                 },
@@ -72,8 +59,6 @@ function getArticulo() {
         
                 }
             });
-        }
-    }
     
 }
 

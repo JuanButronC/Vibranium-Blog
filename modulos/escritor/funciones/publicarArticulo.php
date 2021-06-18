@@ -1,6 +1,6 @@
 <?php
 
-    
+    session_start();
     include 'comunes.php';
 
 
@@ -21,12 +21,12 @@
         $error=true;
     }
 
-    if(isset($_GET["idArticulo"])){
-        if(!is_numeric($_GET["idArticulo"])){
+    if(isset($_SESSION["idArticulo"])){
+        if(!is_numeric($_SESSION["idArticulo"])){
             $msgErr="El id debe ser númerico";
             $error=true;
         }else{
-            $idArticulo=limpiaEntrada($_GET["idArticulo"]);
+            $idArticulo=limpiaEntrada($_SESSION["idArticulo"]);
         }             
     }else{
         $msgErr="El id es requerido";
@@ -45,7 +45,8 @@
                     if($estado!=="1"){                                      
                         $resultado=publica_articulo($idArticulo,$idAutor);            
                         if($resultado["estado"]==0){                      
-                            echo "<p>Estimado escritor, su articulo se publico exitosamente.</p>";            
+                            echo "<p>Estimado escritor, su articulo se publico exitosamente.</p>"; 
+                            unset($_SESSION["idArticulo"]);          
                         }else{   
                             echo "<p>".$resultado['msgError']."</p>"; 
                         } 
