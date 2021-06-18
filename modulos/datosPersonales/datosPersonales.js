@@ -54,7 +54,7 @@ $(document).ready(function () {
 function peticionMostrarDatos() {
    $.ajax({
       type: "POST",
-      url: "modulos/general/mostrarDatosPersonales.php",
+      url: "mostrarDatosPersonales.php",
       data: {
          idUsuario: idUsuario
       },

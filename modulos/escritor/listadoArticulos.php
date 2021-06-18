@@ -28,10 +28,10 @@
       return $estatusArr[$estatus];
    }
 
-   $idEscritor = $_SESSION["idEscritor"];
+   $idEscritor = $_SESSION["idUsuario"];
    $conexionBD = obtenConexionBD();
 
-   if ($conexion) {
+   if ($conexionBD) {
       $datosArticulos = obtenDatosArticulos($conexionBD, $idEscritor);
       $numFilas = mysqli_num_rows($datosArticulos);
       $tabla = "
