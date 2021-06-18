@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servidor = "localhost";
 $usuario = "root";
 $pwd = "";
@@ -15,7 +16,6 @@ if (isset($_POST['eliminar'])) {
     $query = "SELECT estatus FROM articulos where id ='$id_borrar'";
     $estatus = mysqli_query($conn, $query);
     if ($estatus->num_rows == 1) {
-        //session_start();
         $publicado = mysqli_fetch_assoc($estatus);
     }
     if ($publicado["estatus"] == 1) {
@@ -171,17 +171,17 @@ switch ($decada) {
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../../escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>

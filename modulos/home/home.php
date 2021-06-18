@@ -59,7 +59,7 @@ function decada($decada)
 }
 
 $queryArticulos = "SELECT articulos.id,articulos.titulo, articulos.resumen
-  FROM articulos order by 1 desc LIMIT 2";
+  FROM articulos  WHERE articulos.estatus = 1 order by 1 desc LIMIT 2";
 
 $resultadoArticulos = mysqli_query($conn, $queryArticulos);
 
@@ -68,7 +68,7 @@ $queryArticulos2 = "SELECT articulos.id,articulos.titulo, articulos.resumen
 $resultadoArticulos2 = mysqli_query($conn, $queryArticulos2);
 
 
-$areas = "SELECT areas.id,areas.nombre FROM areas WHERE articulos.estatus = 1 order by 1 desc LIMIT 4";
+$areas = "SELECT areas.id,areas.nombre FROM areas order by 1 desc LIMIT 4";
 $resultadoAreas = mysqli_query($conn, $areas);
 ?>
 
@@ -157,7 +157,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../escritor/misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
