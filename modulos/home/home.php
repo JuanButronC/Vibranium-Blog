@@ -11,9 +11,10 @@ if (!$conn) {
 
 $sql = "SELECT articulos.id,articulos.titulo, articulos.siglo, 
   articulos.lugar, articulos.cientificos, articulos.premios,areas.nombre, articulos.decada, 
-  articulos.contenido, usuarios.nombre as ESCRITOR, articulos.imagen
+  articulos.contenido, datos_personales.nombre || ' ' || datos_personales.ape_pat || ' ' || datos_personales.ape_mat as ESCRITOR, articulos.imagen
   FROM articulos INNER JOIN areas ON articulos.id_area=areas.id
   JOIN usuarios ON articulos.id_escritor=usuarios.id
+  JOIN datos_personales ON usuarios.id = datos_personales.id_usuario
    LIMIT 4";
 
 $resultado = mysqli_query($conn, $sql);
@@ -124,7 +125,7 @@ $resultadoAreas = mysqli_query($conn, $areas);
                                 } else {
                                     echo "
                                             <a class='dropdown-item' href='../login/login.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='../signIn/registrar.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -239,108 +240,108 @@ $resultadoAreas = mysqli_query($conn, $areas);
                 <a class="carousel-control-next" href="#demo" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
-                </div>
-            <?php
+            </div>
+        <?php
                     }
                 } else {
-            ?>
-            <div id="demo2" class="carousel slide pad-5" data-ride="carousel">
-                <ul class="carousel-indicators">
-                    <li data-target="#demo2" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo2" data-slide-to="1"></li>
-                    <li data-target="#demo2" data-slide-to="2"></li>
-                </ul>
-
-                <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
-                    <div class="carousel-item active">
-                        <img src="../../img/img.jpg" alt="Imagen 1" height="500" width="100%">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../img/img2.jpg" alt="Imagen 2" height="500" width="100%">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../img/img3.jpg" alt="Imagen 3" height="500" width="100%">
-                    </div>
-                </div>
-
-                <a class="carousel-control-prev" href="#demo2" data-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </a>
-                <a class="carousel-control-next" href="#demo2" data-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </a>
-            </div>
-
-        <?php
-                }
         ?>
+        <div id="demo2" class="carousel slide pad-5" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                <li data-target="#demo2" data-slide-to="1"></li>
+                <li data-target="#demo2" data-slide-to="2"></li>
+            </ul>
 
-            
-
-            <div id="intro" style="padding-left: 3%; padding-right: 3%;">
-                <div class="row ">
-                    <div class="col-md-6 border-right border-info text-center">
-                        <h3><b>Décadas más populares</b></h3>
-                        <a href="vistas/articulos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
-                        <br>
-                        <a href="vistas/articulos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
-                        <br>
-                        <a href="vistas/articulos.php?decada=7" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 70's </a>
-                        <br>
-                        <a href="vistas/articulos.php?decada=6" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 60's </a>
-                    </div>
-                    <div class="col-md-6 text-center">
-                        <h3><b>Artículos por Siglo</b></h3>
-                        <a href="vistas/articulos.php?siglo=20" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
-                            Siglo XX
-                        </a>
-                        <br>
-                        <a href="vistas/articulos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
-                            Siglo XXI
-                        </a>
-                    </div>
+            <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
+                <div class="carousel-item active">
+                    <img src="../../img/img.jpg" alt="Imagen 1" height="500" width="100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../img/img2.jpg" alt="Imagen 2" height="500" width="100%">
+                </div>
+                <div class="carousel-item">
+                    <img src="../../img/img3.jpg" alt="Imagen 3" height="500" width="100%">
                 </div>
             </div>
-            <br>
 
-            <?php
-            $row_num_destacados = mysqli_num_rows($resultadoArticulos);
+            <a class="carousel-control-prev" href="#demo2" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo2" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
 
-            if ($row_num_destacados > 0) {
+    <?php
+                }
+    ?>
 
-            ?>
-                <div id="intro" class="mb-5">
-                    <div class="text-center mt-3 mb-4">
-                        <h2><b>Artículos Destacados</b></h2>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6 text-justify pad-5">
-                            <?php
-                            while ($mostrarDestacados = mysqli_fetch_array($resultadoArticulos)) {
-                                echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados["id"] . '" style="color: black;text-decoration: none;">';
-                                echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados['titulo'] . '</h3>
+
+    <br>
+    <div id="intro" style="padding-left: 3%; padding-right: 3%;">
+        <div class="row ">
+            <div class="col-md-6 border-right border-info text-center">
+                <h3><b>Décadas más populares</b></h3>
+                <a href="vistas/articulos.php?decada=9" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">Década de los 90's </a>
+                <br>
+                <a href="vistas/articulos.php?decada=8" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 80's </a>
+                <br>
+                <a href="vistas/articulos.php?decada=7" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 70's </a>
+                <br>
+                <a href="vistas/articulos.php?decada=6" class="btn btn-outline-primary btn-lg w-75 mb-3" type="submit">Década de los 60's </a>
+            </div>
+            <div class="col-md-6 text-center">
+                <h3><b>Artículos por Siglo</b></h3>
+                <a href="vistas/articulos.php?siglo=20" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
+                    Siglo XX
+                </a>
+                <br>
+                <a href="vistas/articulos.php?siglo=21" class="btn btn-outline-primary btn-lg w-75 mb-3 mt-3" type="submit">
+                    Siglo XXI
+                </a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <?php
+    $row_num_destacados = mysqli_num_rows($resultadoArticulos);
+
+    if ($row_num_destacados > 0) {
+
+    ?>
+        <div id="intro" class="mb-5">
+            <div class="text-center mt-3 mb-4">
+                <h2><b>Artículos Destacados</b></h2>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6 text-justify pad-5">
+                    <?php
+                    while ($mostrarDestacados = mysqli_fetch_array($resultadoArticulos)) {
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados['titulo'] . '</h3>
                                  <p>' . $mostrarDestacados['resumen'] . '</p>';
-                                echo '</a>';
-                                echo '<br>';
-                            }
-                            ?>
-                        </div>
-                        <div class="col-md-6 text-justify pad-5">
-                            <?php
-                            while ($mostrarDestacados2 = mysqli_fetch_array($resultadoArticulos2)) {
-                                echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados2["id"] . '" style="color: black;text-decoration: none;">';
-                                echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados2['titulo'] . '</h3>
-                                 <p>' . $mostrarDestacados2['resumen'] . '</p>';
-                                echo '</a>';
-                                echo '<br>';
-                            }
-                            ?>
-                        </div>
-                    </div>
+                        echo '</a>';
+                        echo '<br>';
+                    }
+                    ?>
                 </div>
-            <?php
-            }
-            ?>
+                <div class="col-md-6 text-justify pad-5">
+                    <?php
+                    while ($mostrarDestacados2 = mysqli_fetch_array($resultadoArticulos2)) {
+                        echo '<a href="../escritor/articulo/individual.php?idArticulo=' . $mostrarDestacados2["id"] . '" style="color: black;text-decoration: none;">';
+                        echo '<h3><i class="fa fa-book mr-2"></i> ' . $mostrarDestacados2['titulo'] . '</h3>
+                                 <p>' . $mostrarDestacados2['resumen'] . '</p>';
+                        echo '</a>';
+                        echo '<br>';
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
     </div>
     <footer>
         <div class="row">
