@@ -21,6 +21,8 @@ if (!$conn) {
 if (isset($_POST['submit'])) {
     //Obtener todos los campos
     $idUser = $_SESSION["idUsuario"];
+    //Establecer zona horaria
+    date_default_timezone_set("America/Mexico_City");
     $fechaCrea = date("Y/m/d");
     $tituloA = mysqli_real_escape_string($conn, $_POST['titulo']);
     $resumen = mysqli_real_escape_string($conn, $_POST['resumen']);
