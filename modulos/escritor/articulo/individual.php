@@ -63,17 +63,17 @@
                 </form>
             </div>
         </nav>
-        <hr style="background-color:white; margin-bottom: 2px; margin-top: 2px;">
+        <hr style="background-color:white; margin-bottom: 2px;">
         <nav class="navbar navbar-expand-lg navbar-dark" style="padding-top:0px;">
 
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
