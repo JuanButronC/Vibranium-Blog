@@ -388,6 +388,7 @@ function hideArticlesCentury(century) {
         var siglo = $(this).attr("siglo-articulo");
         if (siglo === century && !isDecadeSelected(decada)) {
             $(this).prop("hidden", true);
+            $(this).parent().parent().css("margin-bottom","0px");
         }
     });
 }
@@ -399,6 +400,26 @@ function hideArticlesDecade(decade) {
         var siglo = $(this).attr("siglo-articulo");
         if (decada === decade && !isCenturySelected(siglo)) {
             $(this).prop("hidden", true);
+            $(this).parent().parent().css("margin-bottom","0px");
+        }
+    });
+}
+
+function showArticlesCentury(century) {
+    $(".card-articulo").each(function () {
+        var siglo = $(this).attr("siglo-articulo");
+        if (siglo === century) {
+            $(this).prop("hidden", false);
+            $(this).parent().parent().css("margin-bottom","20px");
+        }
+    });
+}
+function showArticlesDecade(decade) {
+    $(".card-articulo").each(function () {
+        var decada = $(this).attr("decada-articulo");
+        if (decada === decade) {
+            $(this).prop("hidden", false);
+            $(this).parent().parent().css("margin-bottom","20px");
         }
     });
 }
@@ -429,14 +450,7 @@ function clearFilter() {
         $(this).prop('checked', false);
     });
 }
-function showArticlesCentury(century) {
-    $(".card-articulo").each(function () {
-        var siglo = $(this).attr("siglo-articulo");
-        if (siglo === century) {
-            $(this).prop("hidden", false);
-        }
-    });
-}
+
 
 function articlesSelected() {
     var result = false;
@@ -450,24 +464,19 @@ function articlesSelected() {
 }
 
 
-function showArticlesDecade(decade) {
-    $(".card-articulo").each(function () {
-        var decada = $(this).attr("decada-articulo");
-        if (decada === decade) {
-            $(this).prop("hidden", false);
-        }
-    });
-}
+
 
 function hideAllArticles() {
     $(".card-articulo").each(function () {
         $(this).prop("hidden", true);
+        $(this).parent().parent().css("margin-bottom","0px");
     });
 }
 
 function showAllArticles() {
     $(".card-articulo").each(function () {
         $(this).prop("hidden", false);
+        $(this).parent().parent().css("margin-bottom","20px");
     });
 }
 
