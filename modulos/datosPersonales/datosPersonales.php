@@ -35,7 +35,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#"><img src="img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
+            <a class="navbar-brand" href="#"><img src="../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -197,9 +197,9 @@
             <h3>Contáctanos</h3>
             <h5>Redes Sociales</h5>
             <p>
-                <i class="fas fa-facebook-square fa-2x"></i>
-                <i class="fas fa-instragram fa-2x"></i>
-                <i class="fas fa-youtube fa-2x"></i>
+                <i class="fa fa-facebook-square fa-2x"></i>
+                <i class="fa fa-instragram fa-2x"></i>
+                <i class="fa fa-youtube fa-2x"></i>
             </p>
             <h5>Email</h5>
             <h6>vibraniumblog@contactme.com</h6>
