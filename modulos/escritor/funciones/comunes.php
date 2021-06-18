@@ -66,9 +66,10 @@ function get_conn(){
     }
 
     function publica_articulo($idArticulo,$idAutor){
-        
+        $fechaAct = date("Y/m/d");
         $sql="UPDATE ARTICULOS 
-                SET ARTICULOS.estatus=1
+                SET ARTICULOS.estatus=1,
+                ARTICULOS.fecha_publicacion='$fechaAct' 
                 WHERE ARTICULOS.id=$idArticulo
                 AND ARTICULOS.id_escritor=$idAutor";
 
