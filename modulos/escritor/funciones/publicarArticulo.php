@@ -17,7 +17,7 @@
             $idAutor=limpiaEntrada($_SESSION["idUsuario"]);
         }             
     }else{
-        $msgErr="El id es requerido";
+        $msgErr="Estimado escritor, ocurrio el sigueinte error:<br>Sesión no valida";
         $error=true;
     }
 
@@ -29,7 +29,7 @@
             $idArticulo=limpiaEntrada($_SESSION["idArticulo"]);
         }             
     }else{
-        $msgErr="El id es requerido";
+        $msgErr="Estimado escritor, ocurrio el sigueinte error:<br>El id del articulo es requerido";
         $error=true;
     }
 
@@ -51,13 +51,13 @@
                             echo "<p>".$resultado['msgError']."</p>"; 
                         } 
                     }else{
-                        echo "<p>Imposible publicar el atículo, ya se encuentra publicado.</p>"; 
+                        echo "Estimado escritor, ocurrio el sigueinte error:<br><p>Imposible publicar el atículo, ya se encuentra publicado.</p>"; 
                     }
                 }else{
-                    echo "<p>Imposible publicar el atículo, no tiene privilegios sobre el artículo.</p>"; 
+                    echo "Estimado escritor, ocurrio el sigueinte error:<br><p>Imposible publicar el atículo, no tiene privilegios sobre el artículo.</p>"; 
                 }
         } else{   
-            echo "<p>".$resultado_art['msgError']."</p>"; 
+            echo "Estimado escritor, ocurrio el sigueinte error:<br><p>".$resultado_art['msgError']."</p>"; 
         } 
     }else{      
                    echo "<p>".$msgErr."</p>"; 
