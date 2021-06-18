@@ -120,6 +120,10 @@
             include "listadoArticulos.php";
          ?>
       </div>
+
+      <div class="row justify-content-center">
+        <a href="articulo/crear.php" class="btn" style="background-color: #4b608a;">Crear artículo</a>
+      </div>
    </div>
 </div>
 
