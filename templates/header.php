@@ -54,9 +54,9 @@ session_start();
                         <label class="my-2 my-sm-0" style="font-size: 24px; margin-right: 60px;">
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
-                                if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
-                                }
+                                    if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
+                                        echo "Bienvenido " . $_SESSION["nombreUsuario"];
+                                    }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
                             </a>
