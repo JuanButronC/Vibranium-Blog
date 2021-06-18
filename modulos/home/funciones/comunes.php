@@ -73,13 +73,13 @@ function limpiaEntrada($input){
                      ARTICULOS.siglo as siglo,
                      ARTICULOS.decada as decada,
                      ARTICULOS.cientificos as cientificos,
-                     USUARIOS.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor,
                      ARTICULOS.id_area as id_area,
                      ARTICULOS.imagen as imagen,
                      AREAS.nombre as area
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
+                      INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                      INNER JOIN AREAS ON
                             AREAS.id=ARTICULOS.id_area
                     WHERE ARTICULOS.estatus=1";
@@ -98,8 +98,10 @@ function limpiaEntrada($input){
       
         $sql="SELECT 
                      USUARIOS.id as id,
-                     USUARIOS.nombre as autor
+                     DATOS_PERSONALES.nombre as autor,
                 FROM  USUARIOS 
+                INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=USUARIOS.id
                 WHERE USUARIOS.id_rol=1
                 LIMIT 5";
         return ejecuta_consulta($sql);
@@ -114,13 +116,13 @@ function limpiaEntrada($input){
                      ARTICULOS.siglo as siglo,
                      ARTICULOS.decada as decada,
                      ARTICULOS.cientificos as cientificos,
-                     USUARIOS.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor,
                      ARTICULOS.imagen as imagen,
                      ARTICULOS.id_area as id_area,
                      AREAS.nombre as area
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
+                INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                      INNER JOIN AREAS ON
                             AREAS.id=ARTICULOS.id_area
                 WHERE ARTICULOS.titulo LIKE '%$cadena%'
@@ -137,13 +139,13 @@ function limpiaEntrada($input){
                      ARTICULOS.siglo as siglo,
                      ARTICULOS.decada as decada,
                      ARTICULOS.cientificos as cientificos,
-                     USUARIOS.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor,
                      ARTICULOS.imagen as imagen,
                      ARTICULOS.id_area as id_area,
                      AREAS.nombre as area
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
+                INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                      INNER JOIN AREAS ON
                             AREAS.id=ARTICULOS.id_area
                 WHERE ARTICULOS.siglo IN ($filtros_siglo) 
@@ -163,13 +165,13 @@ function limpiaEntrada($input){
                      ARTICULOS.siglo as siglo,
                      ARTICULOS.decada as decada,
                      ARTICULOS.cientificos as cientificos,
-                     USUARIOS.nombre as autor,
+                     DATOS_PERSONALES.nombre as autor,
                      ARTICULOS.imagen as imagen,
                      ARTICULOS.id_area as id_area,
                      AREAS.nombre as area
                 FROM ARTICULOS 
-                     INNER JOIN USUARIOS ON
-                            USUARIOS.id=ARTICULOS.id_escritor
+                INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                      INNER JOIN AREAS ON
                             AREAS.id=ARTICULOS.id_area
                      WHERE ARTICULOS.id_area=$idArea
@@ -186,13 +188,13 @@ function limpiaEntrada($input){
                    ARTICULOS.siglo as siglo,
                    ARTICULOS.decada as decada,
                    ARTICULOS.cientificos as cientificos,
-                   USUARIOS.nombre as autor,
+                   DATOS_PERSONALES.nombre as autor,
                    ARTICULOS.imagen as imagen,
                    ARTICULOS.id_area as id_area,
                    AREAS.nombre as area
               FROM ARTICULOS 
-                   INNER JOIN USUARIOS ON
-                          USUARIOS.id=ARTICULOS.id_escritor
+              INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                    INNER JOIN AREAS ON
                           AREAS.id=ARTICULOS.id_area
                    WHERE ARTICULOS.id_escritor=$idAutor
@@ -209,13 +211,13 @@ function limpiaEntrada($input){
                  ARTICULOS.siglo as siglo,
                  ARTICULOS.decada as decada,
                  ARTICULOS.cientificos as cientificos,
-                 USUARIOS.nombre as autor,
+                 DATOS_PERSONALES.nombre as autor,
                  ARTICULOS.imagen as imagen,
                  ARTICULOS.id_area as id_area,
                  AREAS.nombre as area
             FROM ARTICULOS 
-                 INNER JOIN USUARIOS ON
-                        USUARIOS.id=ARTICULOS.id_escritor
+            INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                  INNER JOIN AREAS ON
                         AREAS.id=ARTICULOS.id_area
             WHERE ARTICULOS.siglo IN ($filtros_siglo)
@@ -233,13 +235,13 @@ function get_coincidencias_decadas($filtros_decada){
                ARTICULOS.siglo as siglo,
                ARTICULOS.decada as decada,
                ARTICULOS.cientificos as cientificos,
-               USUARIOS.nombre as autor,
+               DATOS_PERSONALES.nombre as autor,
                ARTICULOS.imagen as imagen,
                ARTICULOS.id_area as id_area,
                AREAS.nombre as area
           FROM ARTICULOS 
-               INNER JOIN USUARIOS ON
-                      USUARIOS.id=ARTICULOS.id_escritor
+          INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                INNER JOIN AREAS ON
                       AREAS.id=ARTICULOS.id_area
           WHERE  ARTICULOS.decada IN ($filtros_decada)
@@ -257,13 +259,13 @@ function get_coincidencias_siglo($siglo){
                ARTICULOS.siglo as siglo,
                ARTICULOS.decada as decada,
                ARTICULOS.cientificos as cientificos,
-               USUARIOS.nombre as autor,
+               DATOS_PERSONALES.nombre as autor,
                ARTICULOS.imagen as imagen,
                ARTICULOS.id_area as id_area,
                AREAS.nombre as area
           FROM ARTICULOS 
-               INNER JOIN USUARIOS ON
-                      USUARIOS.id=ARTICULOS.id_escritor
+          INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                INNER JOIN AREAS ON
                       AREAS.id=ARTICULOS.id_area
           WHERE ARTICULOS.siglo = $siglo
@@ -280,13 +282,13 @@ function get_coincidencias_decada($decada){
               ARTICULOS.siglo as siglo,
               ARTICULOS.decada as decada,
               ARTICULOS.cientificos as cientificos,
-              USUARIOS.nombre as autor,
+              DATOS_PERSONALES.nombre as autor,
               ARTICULOS.imagen as imagen,
               ARTICULOS.id_area as id_area,
               AREAS.nombre as area
           FROM ARTICULOS 
-              INNER JOIN USUARIOS ON
-                      USUARIOS.id=ARTICULOS.id_escritor
+          INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
               INNER JOIN AREAS ON
                       AREAS.id=ARTICULOS.id_area
           WHERE  ARTICULOS.decada = $decada
@@ -303,13 +305,13 @@ function get_coincidencias_cientificos($cadena){
                ARTICULOS.siglo as siglo,
                ARTICULOS.decada as decada,
                ARTICULOS.cientificos as cientificos,
-               USUARIOS.nombre as autor,
+               DATOS_PERSONALES.nombre as autor,
                ARTICULOS.imagen as imagen,
                ARTICULOS.id_area as id_area,
                AREAS.nombre as area
           FROM ARTICULOS 
-               INNER JOIN USUARIOS ON
-                      USUARIOS.id=ARTICULOS.id_escritor
+          INNER JOIN DATOS_PERSONALES ON
+                            DATOS_PERSONALES.id_usuario=ARTICULOS.id_escritor
                INNER JOIN AREAS ON
                       AREAS.id=ARTICULOS.id_area
           WHERE ARTICULOS.cientificos = '$cadena'
