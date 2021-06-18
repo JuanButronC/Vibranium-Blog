@@ -54,7 +54,7 @@
    function obtenConexionBD() {
       $servidorBD = "localhost";
       $usuarioBD = "root";
-      $contraseniaBD = "root";
+      $contraseniaBD = "";
       $nombreBD = "VibraniumBlogDB";
 
       $conexion = mysqli_connect($servidorBD, $usuarioBD, $contraseniaBD, $nombreBD);
