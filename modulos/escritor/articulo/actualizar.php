@@ -72,7 +72,7 @@ if (isset($_POST['idArticulo'])) {
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -152,7 +152,7 @@ if (isset($_POST['idArticulo'])) {
                             </div>
                             <hr>
                             <div style="width:100%; height: 200px;">
-                                <img id="imgCover" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']); ?>" style="object-fit:fill;width:100%;height:100%;">
+                                <img id="imgCover" src="<?php echo 'data:image/jpeg;base64,' . $mostrar['imagen']; ?>" style="object-fit:fill;width:100%;height:100%;">
                                 <input id="imgCoverr" value="" hidden />
                             </div>
                             <div align="right" hidden>
