@@ -79,13 +79,6 @@
                ";
             }
          }
-
-         $tabla .= "
-               </tbody>
-            </table>
-         ";
-   
-         echo $tabla;
       }
       else {
          echo "
@@ -94,6 +87,13 @@
             </tr>
          ";
       }
+
+      $tabla .= "
+               </tbody>
+            </table>
+         ";
+
+      echo $tabla;
    }
    else {
       echo "
