@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
             '<div class="alert alert-success">
                 <strong>¡Éxito!</strong> Artículo creado satisfactoriamente.
             </div>';
-            //header('Location: ');
+            header('Location: ../misArticulos.php');
         }
         else
         {
