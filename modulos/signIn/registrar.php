@@ -5,7 +5,7 @@
    }
 
    function validaContrasenia($contrasenia) {
-      return preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9\.]{6,}$/", $contrasenia);
+      return preg_match("/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9.]{6,}$/", $contrasenia);
    }
 
    function validaFecha($fecha) {
