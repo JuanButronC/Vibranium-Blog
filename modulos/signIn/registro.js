@@ -120,7 +120,7 @@ function msjsErrorValidacion () {
 function peticionRegistro (datosEnURL) {
    $.ajax({
       type: "POST",
-      url: "modulos/general/registrar.php",
+      url: "registrar.php",
       data: datosEnURL,
       success: function (response) {
          response = $.parseJSON(response);
@@ -158,7 +158,7 @@ $.validator.addMethod("correoValido", function (value, element) {
 });
 
 $.validator.addMethod("contraseniaValida", function (value, element) {
-   return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9\.]{6,}$/.test(value);
+   return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9.]{6,}$/.test(value);
 });
 
 $.validator.addMethod("fechaValida", function (value, element) {
