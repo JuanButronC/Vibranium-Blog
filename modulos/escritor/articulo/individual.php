@@ -1,3 +1,10 @@
+<?php session_start(); 
+if(isset($_SESSION["idUsuario"])){
+    $idUsuario = $_SESSION["idUsuario"];
+} else {
+    $idUsuario = null;
+}
+?>
 <!doctype html>
 <html lang="es">
 
@@ -35,7 +42,7 @@
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -44,13 +51,13 @@
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='../../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -90,7 +97,7 @@
     </header>
     <!--Publicar nuevo comentario-->
     <?php
-    if (isset($_POST["comentarioNuevo"]) && isset($_POST["idUsuario"])) {
+    if (isset($_POST["comentarioNuevo"]) && isset($_POST["idUsuario"]) && isset($_POST["idArticulo"])) {
         $idUsuario = $_POST["idUsuario"];
         $servidor = "localhost";
         $usuarioBD = "root";
@@ -98,7 +105,7 @@
         $nomBD = "vibraniumblogdb";
 
         $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
-        $idArticulo = mysqli_real_escape_string($db, $_GET["idArticulo"]);
+        $idArticulo = mysqli_real_escape_string($db, $_POST["idArticulo"]);
         $idLector = mysqli_real_escape_string($db, $idUsuario);
         $comentarioNuevo = mysqli_real_escape_string($db, $_POST["comentarioNuevo"]);
         if (!$db) {
@@ -115,8 +122,6 @@
             echo "Error " . $sql . " :" . mysqli_error($db);
             $_SESSION["estatusComentario"] = "Su comentario no pudo añadirse";
         }
-    } else {
-        $idUsuario = null;
     }
     ?>
 
@@ -128,14 +133,22 @@
         $pwdBD = "";
         $nomBD = "vibraniumblogdb";
 
-        //traer variable de ID artículo
-        if (isset($_GET["idArticulo"])) {
+        //Mostrar cuerpo de artículo
+        if (isset($_GET["idArticulo"]) || isset($_POST["idArticulo"])) {
 
             $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
 
-            $idArticulo = mysqli_real_escape_string($db,  $_GET["idArticulo"]);
-            $queryArticulo = "SELECT a.imagen, a.titulo, a.contenido, u.nombre, a.fecha_creacion
-                        FROM articulos a JOIN usuarios u ON a.id_escritor = u.id
+            if(isset($_GET["idArticulo"])){
+                $idArticulo = $_GET["idArticulo"];
+            }else{
+                $idArticulo = $_POST["idArticulo"];
+            }
+
+            $idArticulo = mysqli_real_escape_string($db,  $idArticulo);
+            $queryArticulo = "SELECT a.imagen, a.titulo, a.contenido, dp.nombre, a.fecha_creacion
+                        FROM articulos a
+                        JOIN usuarios u ON a.id_escritor = u.id
+                        JOIN datos_personales dp ON u.id = dp.id_usuario
                         WHERE a.id= '$idArticulo'"; //cambiar por id de artículo
             $resultado = mysqli_query($db, $queryArticulo);
             while ($mostrar = mysqli_fetch_array($resultado)) {
@@ -145,7 +158,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div style="width:100%; height: 300px;">
-                                <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode($mostrar['imagen']); ?>" style="object-fit:fill;width:100%;height:100%;">
+                                <img src="<?php echo 'data:image/jpeg;base64,' . $mostrar['imagen']; ?>" style="object-fit:fill;width:100%;height:100%;">
                             </div>
                         </div>
                     </div>
@@ -173,16 +186,24 @@
             }
                 ?>
                 <?php
-
-                if (isset($_GET["idArticulo"])) {
+                //Mostrar comentarios de artículo
+                if (isset($_GET["idArticulo"]) || isset($_POST["idArticulo"])) {
                     $servidor = "localhost";
                     $usuarioBD = "root";
                     $pwdBD = "";
                     $nomBD = "vibraniumblogdb";
                     $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
-                    $idArticulo = mysqli_real_escape_string($db,  $_GET["idArticulo"]);
-                    $queryComentarios = "SELECT l.nombre, c.texto, c.fecha_creacion
-                    FROM comentarios c JOIN usuarios l ON c.id_lector = l.id 
+                    
+            if(isset($_GET["idArticulo"])){
+                $idArticulo = $_GET["idArticulo"];
+            }else{
+                $idArticulo = $_POST["idArticulo"];
+            }
+                    $idArticulo = mysqli_real_escape_string($db,  $idArticulo);
+                    $queryComentarios = "SELECT dp.nombre, c.texto, c.fecha_creacion
+                    FROM comentarios c
+                    JOIN usuarios l ON c.id_lector = l.id 
+                    JOIN datos_personales dp ON l.id = dp.id_usuario
                     WHERE c.id_articulo = '$idArticulo'
                     ORDER BY c.fecha_creacion DESC";
                     $resultado = mysqli_query($db, $queryComentarios);
@@ -206,6 +227,7 @@
                                                 <div class="card-body">
                                                     <textarea id="comentarioNuevo" name="comentarioNuevo" style="width:100%; height:100%; min-height:100px; max-height:180px" placeholder="Cuéntanos qué te pareció el artículo"></textarea>
                                                     <input hidden value="<?php echo $idUsuario ?>" name="idUsuario" />
+                                                    <input hidden value="<?php echo $idArticulo ?>" name="idArticulo" />
                                                 </div>
                                                 <div class="card-footer">
                                                     <button id="btnPublicar" class="btn btn-info" style="width:100%" type="submit">
