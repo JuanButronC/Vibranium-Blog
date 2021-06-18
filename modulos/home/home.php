@@ -12,7 +12,7 @@ if (!$conn) {
 
 $sql = "SELECT articulos.id,articulos.titulo, articulos.siglo, 
   articulos.lugar, articulos.cientificos, articulos.premios,areas.nombre, articulos.decada, 
-  articulos.contenido, datos_personales.nombre || ' ' || datos_personales.ape_pat || ' ' || datos_personales.ape_mat as ESCRITOR, articulos.imagen
+  articulos.contenido, CONCAT(datos_personales.nombre, ' ', datos_personales.ape_pat, ' ', datos_personales.ape_mat) as ESCRITOR, articulos.imagen
   FROM articulos INNER JOIN areas ON articulos.id_area=areas.id
   JOIN usuarios ON articulos.id_escritor=usuarios.id
   JOIN datos_personales ON usuarios.id = datos_personales.id_usuario
