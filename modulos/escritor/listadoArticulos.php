@@ -38,8 +38,8 @@
          <table class='table table-responsive'>
             <thead class='text-white' style='background-color: #4b608a;'>
                <tr>
-                  <th class='text-center align-middle' style='width: 30%;'>Imagen</th>
-                  <th class='text-center align-middle' style='width: 10%;'>Titulo</th>
+                  <th class='text-center align-middle' style='width: 20%;'>Imagen</th>
+                  <th class='text-center align-middle' style='width: 20%;'>Titulo</th>
                   <th class='text-center align-middle' style='width: 10%;'>Fecha de creación</th>
                   <th class='text-center align-middle' style='width: 10%;'>Fecha de publicación</th>
                   <th class='text-center align-middle' style='width: 10%;'>Estatus</th>
@@ -56,8 +56,8 @@
          while ($fila = mysqli_fetch_assoc($datosArticulos)) {
             $tabla .= "
                <tr>
-                  <td class='text-center'><img src='" . 'data:image/jpeg;base64,' . $fila['imagen'] . "' style='max-width: 50%; height: auto;'></td>
-                  <td class='text-center align-middle'>" . $fila["titulo"] . "</td>
+                  <td class='text-center'><img src='" . 'data:image/jpeg;base64,' . $fila['imagen'] . "' style='max-width: 100%; height: auto;'></td>
+                  <td class='text-justify align-middle'>" . $fila["titulo"] . "</td>
                   <td class='text-center align-middle'>" . $fila["fecha_creacion"] . "</td>
                   <td class='text-center align-middle'>" . $fila["fecha_publicacion"] . "</td>
                   <td class='text-center align-middle'>" . obtenNombreEstatus($fila["estatus"]) . "</td>";
