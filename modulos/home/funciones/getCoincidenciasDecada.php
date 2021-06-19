@@ -6,19 +6,14 @@
     $msgErr="";
     $decada="";
 
-    if(!empty($_GET["decada"])){
+   
         if(!is_numeric($_GET["decada"])){
             $msgErr="La decada debe ser númerica";
             $error=true;
         }else{
             $decada=limpiaEntrada($_GET["decada"]);
         }             
-    }else{
-        $msgErr="La decada  es requerida";
-        $error=true;
-
-
-    }
+ 
 
     if(!$error){
         $resultado=get_coincidencias_decada($decada);
