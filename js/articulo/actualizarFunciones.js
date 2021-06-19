@@ -8,6 +8,12 @@ $(document).ready(function() {
         $.each(arregloDatos, function(index, value) {
             if (value.value === "") {
                 campoVacío = true;
+            } else {
+                if (value.name === "decada" || value.name === "siglo" || value.name === "area") {
+                    if (value.value === "-1") {
+                        campoVacío = true;
+                    }
+                }
             }
         });
 
