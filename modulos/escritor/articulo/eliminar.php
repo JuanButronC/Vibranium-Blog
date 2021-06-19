@@ -1,10 +1,11 @@
 <?php
+session_start();
 $servidor = "localhost";
 $usuario = "root";
 $pwd = "";
 $nombreBD = "vibraniumblogdb";
 $conn = new mysqli($servidor, $usuario, $pwd, $nombreBD);
-session_start();
+
 if (!$conn) {
     echo 'Error de conexión: ' . mysqli_connect_error();
 }
@@ -15,7 +16,6 @@ if (isset($_POST['eliminar'])) {
     $query = "SELECT estatus FROM articulos where id ='$id_borrar'";
     $estatus = mysqli_query($conn, $query);
     if ($estatus->num_rows == 1) {
-        //session_start();
         $publicado = mysqli_fetch_assoc($estatus);
     }
     if ($publicado["estatus"] == 1) {
@@ -24,7 +24,9 @@ if (isset($_POST['eliminar'])) {
         $sql = "DELETE FROM articulos  WHERE id ='$id_borrar'";
         $resultado = mysqli_query($conn, $sql);
         if ($resultado) {
-            header('Location: ../../modulos/escritor/eliminar.php?id=');
+            $_SESSION["msjeExitoEliminacion"] = '<div class="alert alert-info">¡La eliminación se realizo de manera correcta!</div>';
+            
+            header('Location: ../misArticulos.php');
         } else {
             echo "Error: " . $sql . ":" . mysqli_error($conn);
         }
@@ -37,19 +39,16 @@ if (isset($_GET['id'])) {
         $sql = "SELECT 'No Existe ' as titulo, 3 as estatus, 0 as siglo, 
                         'No aplica lugar' as lugar, 'No aplica científicos' as cientificos, 
                         'No aplica premios' as premios,'No aplica área' as nombre, 10 as decada, 
-                        'Sin contenido' as contenido 
+                        'Sin contenido' as contenido, 'Sin imagen' as imagen
                         FROM dual";
         $id = -1;
     } else {
         $sql = "SELECT articulos.titulo, articulos.estatus, articulos.siglo, 
                         articulos.lugar, articulos.cientificos, 
                         articulos.premios,areas.nombre, articulos.decada, 
-                        articulos.contenido 
+                        articulos.contenido, articulos.imagen
                         FROM articulos INNER JOIN areas ON articulos.id_area=areas.id where articulos.id='$id'";
     }
-
-    //Iniciar sesión
-
 
     $resultado = mysqli_query($conn, $sql);
     if ($resultado->num_rows == 1) {
@@ -102,7 +101,7 @@ switch ($decada) {
 
 <head>
     <title>Vibranium Blog</title>
-    <link rel="icon" type="image/png" href="../../img/icono.png" />
+    <link rel="icon" type="image/png" href="../../../img/icono.png" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -110,15 +109,15 @@ switch ($decada) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.css">
-    <link rel="stylesheet" href="../../css/templates.css">
-    <link rel="stylesheet" href="../../css/eliminar.css">
+    <link rel="stylesheet" href="../../../css/templates.css">
+    <link rel="stylesheet" href="../../../css/eliminar.css">
 </head>
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Brand -->
-            <a class="navbar-brand" href="#"><img src="../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
+            <a class="navbar-brand" href="#"><img src="../../../img/logoBlogW.png" alt="logo" width="170px" height="60px"></a>
 
             <!-- Toggler/collapsibe Button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -136,7 +135,7 @@ switch ($decada) {
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
-                                    echo "Bienvenido " + $_SESSION["nombreUsuario"];
+                                    echo "Bienvenido " . $_SESSION["nombreUsuario"];
                                 }
                                 ?>
                                 <i class="fa fa-user" style="margin-left: 10px;"></i>
@@ -145,13 +144,13 @@ switch ($decada) {
                                 <?php
                                 if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"])) {
                                     echo "
-                                            <a class='dropdown-item' href='datosPersonales.php'>Datos personales</a>
-                                            <a class='dropdown-item' href='cerrarSesion.php'>Cerrar Sesión</a>
+                                            <a class='dropdown-item' href='../../datosPersonales/datosPersonales.php'>Datos personales</a>
+                                            <a class='dropdown-item' href='../../login/cerrarSesion.php'>Cerrar Sesión</a>
                                         ";
                                 } else {
                                     echo "
-                                            <a class='dropdown-item' href='iniciarSesion.php'>Iniciar sesión</a>
-                                            <a class='dropdown-item' href='registro.php'>Registrarse</a>
+                                            <a class='dropdown-item' href='../../login/login.php'>Iniciar sesión</a>
+                                            <a class='dropdown-item' href='../../signIn/registro.php'>Registrarse</a>
                                         ";
                                 }
                                 ?>
@@ -171,17 +170,17 @@ switch ($decada) {
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Inicio</a>
+                        <a class="nav-link" href="../../home/home.php">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="articulos.php">Artículos</a>
+                        <a class="nav-link" href="../../home/vistas/articulos.php">Artículos</a>
                     </li>
 
                     <?php
                     if (isset($_SESSION["aut"]) && isset($_SESSION["nombreUsuario"]) && isset($_SESSION["rol"]) && $_SESSION["rol"] == 1) {
                         echo "
                             <li class='nav-item'>
-                                <a class='nav-link' href='misArticulos.php'>Mis artículos</a>
+                                <a class='nav-link' href='../misArticulos.php'>Mis artículos</a>
                             </li>";
                     }
                     ?>
@@ -189,8 +188,9 @@ switch ($decada) {
             </div>
         </nav>
     </header>
+
     <div style="padding: 3%;">
-        <a href="../home/home.php" class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fa fa-chevron-left"></i> Regresar</a>
+        <a href="../misArticulos.php" class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fa fa-chevron-left"></i> Regresar</a>
         <br>
         <br>
         <div class="text-center">
@@ -213,6 +213,7 @@ switch ($decada) {
             </b></p>
         <div class="row">
             <div class="offset-md-1 col-md-10">
+                <br>
                 <h3><b>Detalles</b></h3>
                 <div class="card border-info">
                     <div class="card-body">
@@ -275,9 +276,9 @@ switch ($decada) {
                 <h3>Contáctanos</h3>
                 <h5>Redes Sociales</h5>
                 <p>
-                    <img src="../../img/facebook.png" alt="facebook" height="50px" width="50px">
-                    <img src="../../img/instagram.png" alt="instagram" height="50px" width="50px">
-                    <img src="../../img/youtube.png" alt="youtube" height="50px" width="50px">
+                    <img src="../../../img/facebook.png" alt="facebook" height="50px" width="50px">
+                    <img src="../../../img/instagram.png" alt="instagram" height="50px" width="50px">
+                    <img src="../../../img/youtube.png" alt="youtube" height="50px" width="50px">
                 </p>
                 <h5>Email</h5>
                 <h6>vibraniumblog@contactme.com</h6>
@@ -307,11 +308,10 @@ switch ($decada) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js" integrity="sha512-RdSPYh1WA6BF0RhpisYJVYkOyTzK4HwofJ3Q7ivt/jkpW6Vc8AurL1R+4AUcvn9IwEKAPm/fk7qFZW3OuiUDeg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
+
     <script>
         var estatus = "<?php echo $estatusPublicado; ?>";
         var id = "<?php echo $id; ?>" == "-1";
-        
     </script>
     <script src="../../js/eliminar.js" type="text/javascript"></script>
 </body>
