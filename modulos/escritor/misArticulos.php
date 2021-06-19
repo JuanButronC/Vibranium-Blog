@@ -33,6 +33,13 @@
 </head>
 
 <body>
+
+<?php
+   if (isset($_SESSION['msjeExito'])) {
+        echo $_SESSION["msjeExito"];
+        unset($_SESSION["msjeExito"]);
+    }
+?>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <!-- Brand -->
@@ -108,6 +115,13 @@
     </header>
 
 <div class="container">
+   <?php
+      if (isset($_SESSION["msjeExitoEliminacion"])) {
+          echo $_SESSION["msjeExitoEliminacion"];
+          unset($_SESSION["msjeExitoEliminacion"]);
+      }
+   ?>
+
    <br>
 
    <h1 class="text-center">Mis Artículos</h1>
