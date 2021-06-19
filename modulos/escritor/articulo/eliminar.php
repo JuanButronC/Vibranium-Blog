@@ -24,6 +24,8 @@ if (isset($_POST['eliminar'])) {
         $sql = "DELETE FROM articulos  WHERE id ='$id_borrar'";
         $resultado = mysqli_query($conn, $sql);
         if ($resultado) {
+            $_SESSION["msjeExitoEliminacion"] = '<div class="alert alert-info">¡La eliminación se realizo de manera correcta!</div>';
+            
             header('Location: ../misArticulos.php');
         } else {
             echo "Error: " . $sql . ":" . mysqli_error($conn);
@@ -37,7 +39,7 @@ if (isset($_GET['id'])) {
         $sql = "SELECT 'No Existe ' as titulo, 3 as estatus, 0 as siglo, 
                         'No aplica lugar' as lugar, 'No aplica científicos' as cientificos, 
                         'No aplica premios' as premios,'No aplica área' as nombre, 10 as decada, 
-                        'Sin contenido' as contenido 
+                        'Sin contenido' as contenido, 'Sin imagen' as imagen
                         FROM dual";
         $id = -1;
     } else {
@@ -47,9 +49,6 @@ if (isset($_GET['id'])) {
                         articulos.contenido, articulos.imagen
                         FROM articulos INNER JOIN areas ON articulos.id_area=areas.id where articulos.id='$id'";
     }
-
-    //Iniciar sesión
-
 
     $resultado = mysqli_query($conn, $sql);
     if ($resultado->num_rows == 1) {
@@ -222,7 +221,7 @@ switch ($decada) {
                     <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
                         <div class="carousel-item active">
                             <?php
-                            echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . $articulo['imagen'] . '" alt="Card image cap" height="300px" width="100%">';
+                            echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . $articulo['imagen'] . '" alt="Artículo Sin Imagen" height="300px" width="100%">';
                             ?>
                         </div>
 
