@@ -83,10 +83,16 @@ $(document).ready(function() {
         var input = this;
         var url = $("#cargaImagen").val();
         var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+        if (ext == "jpg") {
+            ext = "jpeg";
+        }
         if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
             var reader = new FileReader();
             reader.onload = function(e) {
-                $('#imgCover').attr('src', e.target.result);
+                var imageEncoded = e.target.result;
+                $('#imgCover').attr('src', imageEncoded);
+                var imageBase64 = imageEncoded.slice(11 + ext.length + 8);
+                $("#imgCoverData").val(imageBase64);
             }
             var img = new Object();
             img = input.files[0];
