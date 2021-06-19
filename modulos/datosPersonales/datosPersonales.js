@@ -13,6 +13,7 @@ $(document).ready(function () {
       $("#apPat").prop("readonly", false);
       $("#apMat").prop("readonly", false);
       $("#fecNac").prop("disabled", false);
+      $("#fecNac").prop("readonly", true);
       $("#sexo").prop("disabled", false);
    });
 
@@ -24,6 +25,7 @@ $(document).ready(function () {
       $("#nombre").prop("readonly", true);
       $("#apPat").prop("readonly", true);
       $("#apMat").prop("readonly", true);
+      $("#fecNac").prop("readonly", false);
       $("#fecNac").prop("disabled", true);
       $("#sexo").prop("disabled", true);
    });
@@ -166,6 +168,7 @@ function peticionActualizarDatos(datosEnURL) {
             $("#nombre").prop("readonly", true);
             $("#apPat").prop("readonly", true);
             $("#apMat").prop("readonly", true);
+            $("#fecNac").prop("readonly", false);
             $("#fecNac").prop("disabled", true);
             $("#sexo").prop("disabled", true);
 
