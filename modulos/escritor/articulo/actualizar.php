@@ -17,13 +17,14 @@ if (isset($_POST['idArticulo'])) {
     $cientificosA = mysqli_real_escape_string($db, $_POST['cientificos']);
     $areaA = mysqli_real_escape_string($db, $_POST['area']);
     $contenidoA = mysqli_real_escape_string($db, $_POST['contenido']);
+    $imageCoverA = mysqli_real_escape_string($db, $_POST['imgCoverData']);
     if (!$db) {
         die("La conexión falló: " . mysqli_connect_error());
     } else {
         $sql = "UPDATE articulos
         SET titulo='$tituloA', id_area='$areaA', decada='$decadaA',
         siglo='$sigloA', cientificos='$cientificosA', lugar='$lugarA',
-        premios='$premiosA', contenido='$contenidoA'
+        premios='$premiosA', contenido='$contenidoA', imagen='$imageCoverA'
         WHERE id='$idArticulo'";
     }
     if (mysqli_query($db, $sql)) {
@@ -153,9 +154,9 @@ if (isset($_POST['idArticulo'])) {
                             <hr>
                             <div style="width:100%; height: 200px;">
                                 <img id="imgCover" src="<?php echo 'data:image/jpeg;base64,' . $mostrar['imagen']; ?>" style="object-fit:fill;width:100%;height:100%;">
-                                <input id="imgCoverr" value="" hidden />
+                                <input id="imgCoverData" value="<?php echo $mostrar['imagen']; ?>" hidden name="imgCoverData"/>
                             </div>
-                            <div align="right" hidden>
+                            <div align="right">
                                 <input type="file" id="cargaImagen" class="btn btn-secondary" style="margin-top: 10px;padding-top: 2px; padding-bottom: 2px">
                             </div>
                             <hr>
