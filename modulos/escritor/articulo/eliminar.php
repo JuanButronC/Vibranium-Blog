@@ -213,6 +213,20 @@ switch ($decada) {
             </b></p>
         <div class="row">
             <div class="offset-md-1 col-md-10">
+                <div id="demo2" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo2" data-slide-to="0" class="active"></li>
+                    </ul>
+
+                    <div class="carousel-inner  border border-info rounded pt-3 pl-3 pr-3 pb-3">
+                        <div class="carousel-item active">
+                            <?php
+                            echo '<img class="card-img-top" src="' . 'data:image/jpeg;base64,' . $articulo['imagen'] . '" alt="Artículo Sin Imagen" height="300px" width="100%">';
+                            ?>
+                        </div>
+
+                    </div>
+                </div>
                 <br>
                 <h3><b>Detalles</b></h3>
                 <div class="card border-info">
