@@ -1,6 +1,9 @@
 $(document).ready(function() {
     //generación de textarea editor
     var editor = new Jodit('#editor');
+    $("#editor").on('change', function(e) {
+        $("#contenido").val(editor.value);
+    });
     //Guardar cambios
     $("#save").on('click', function(e) {
         var arregloDatos = $("#formActualizar").serializeArray();
