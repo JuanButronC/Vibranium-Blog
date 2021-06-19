@@ -18,13 +18,14 @@ if (isset($_POST['idArticulo'])) {
     $areaA = mysqli_real_escape_string($db, $_POST['area']);
     $contenidoA = mysqli_real_escape_string($db, $_POST['contenido']);
     $imageCoverA = mysqli_real_escape_string($db, $_POST['imgCoverData']);
+    $resumenA = mysqli_real_escape_string($db, $_POST['resumen']);
     if (!$db) {
         die("La conexión falló: " . mysqli_connect_error());
     } else {
         $sql = "UPDATE articulos
         SET titulo='$tituloA', id_area='$areaA', decada='$decadaA',
         siglo='$sigloA', cientificos='$cientificosA', lugar='$lugarA',
-        premios='$premiosA', contenido='$contenidoA', imagen='$imageCoverA'
+        premios='$premiosA', contenido='$contenidoA', imagen='$imageCoverA', resumen='$resumenA'
         WHERE id='$idArticulo'";
     }
     if (mysqli_query($db, $sql)) {
@@ -135,7 +136,9 @@ if (isset($_POST['idArticulo'])) {
         $nomBD = "vibraniumblogdb";
         $db = mysqli_connect($servidor, $usuarioBD, $pwdBD, $nomBD);
         $idArticulo = mysqli_real_escape_string($db, $_GET['idArticulo']);
-        $query = "SELECT arti.imagen, arti.id_area, arti.titulo, arti.siglo, arti.lugar, arti.cientificos, arti.premios, are.nombre, arti.decada, arti.contenido 
+        $query = 
+            "SELECT arti.imagen, arti.id_area, arti.titulo, arti.siglo, arti.lugar,
+            arti.cientificos, arti.premios, are.nombre, arti.decada, arti.contenido, arti.resumen
             FROM articulos arti JOIN areas are ON arti.id_area = are.id
             WHERE arti.id= '$idArticulo'";
         $resultado = mysqli_query($db, $query) or die("<b>Error:</b> Problem on Retrieving Image BLOB<br/>" . mysqli_error($db));
@@ -160,13 +163,13 @@ if (isset($_POST['idArticulo'])) {
                                 <input type="file" id="cargaImagen" class="btn btn-secondary" style="margin-top: 10px;padding-top: 2px; padding-bottom: 2px">
                             </div>
                             <hr>
-                        </div>
-                        <div class="col-md-6">
                             <input hidden name="idArticulo" value="<?php echo $idArticulo; ?>" />
                             <label for="basic-url">Título</label>
                             <div class="input-group mb-3">
                                 <input name="titulo" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="<?php echo $mostrar['titulo'] ?>">
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <label for="basic-url">Lugar de descubrimiento</label>
                             <div class="input-group mb-3">
                                 <input name="lugar" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" value="<?php echo $mostrar['lugar'] ?>">
@@ -233,6 +236,12 @@ if (isset($_POST['idArticulo'])) {
                                     ?>
                                 </select>
                             </div>
+                        </div>
+                        <div class="col-md-12">
+                        <label for="basic-url">Resumen</label>
+                        <textarea class="form-control" name="resumen" id="resumen" style="min-height: 150px;max-height: 150px;"><?php echo $mostrar['resumen'];?></textarea>
+                        <br>
+                        <hr>
                         </div>
                         <div class="col-md-12">
                             <div align="left"><br>
