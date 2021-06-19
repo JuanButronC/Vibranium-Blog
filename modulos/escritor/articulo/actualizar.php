@@ -250,7 +250,7 @@ if (isset($_POST['idArticulo'])) {
                             <div id="editor" style="width: 100%; height: 1500px; background-color: #ffffff">
                                 <?php echo $mostrar['contenido']; ?>
                             </div>
-                            <textarea hidden id="contenido" name="contenido">reemplazar contenido</textarea>
+                            <textarea hidden id="contenido" name="contenido"></textarea>
                             <div align="right">
                                 <button id="discard" type="button" class="btn btn-secondary" style="margin-top: 10px;padding-top: 2px; padding-bottom: 2px">
                                     <span class="fa fa-times"></span>
