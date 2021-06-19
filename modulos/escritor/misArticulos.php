@@ -114,7 +114,7 @@
         </nav>
     </header>
 
-<div class="container">
+<div class="container"  style="min-height: 800px;">
    <?php
       if (isset($_SESSION["msjeExitoEliminacion"])) {
           echo $_SESSION["msjeExitoEliminacion"];
