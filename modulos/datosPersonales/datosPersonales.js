@@ -69,7 +69,10 @@ function peticionMostrarDatos() {
             $("#sexo").val(response.datos.sexo);
          }
          else {
-
+            bootbox.alert({
+               title: "Error",
+               message: response.msjError
+            });
          }
       }
    });
