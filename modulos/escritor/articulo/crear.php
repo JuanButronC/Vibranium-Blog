@@ -49,7 +49,8 @@ if (isset($_POST['submit'])) {
         $resultado = mysqli_query($conn, $sql);
         if ($resultado) {
             //Redirección al home del Escritor
-            echo
+            //echo
+            $_SESSION['msjeExito'] =
             '<div class="alert alert-success">
                 <strong>¡Éxito!</strong> Artículo creado satisfactoriamente.
             </div>';
