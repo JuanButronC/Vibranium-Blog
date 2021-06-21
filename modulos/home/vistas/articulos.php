@@ -69,7 +69,6 @@ if(!empty($_GET["decada"])){
             <!-- Navbar links -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
                 </ul>
 
                 <form class="form-inline my-2 my-lg-0">

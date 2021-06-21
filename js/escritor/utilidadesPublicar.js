@@ -13,6 +13,26 @@ function publicar() {
         function (resultado) {
             if (resultado) {
                 publicarArticulo();                       
+                var data_get = $("#div-data-get").attr("get-data-id-articulo");
+                data_get = data_get.trim();
+                const FORMAT = /^([0-9]){1,2}$/;
+                if (data_get !== "") {
+                    if (FORMAT.test(data_get)) {
+                        $.ajax({
+                            type: "GET",
+                            url: "../funciones/publicarArticulo.php",
+                            dataType: "html",
+                            data:{idArticulo:data_get},
+                            success: function (response) {
+                                bootBoxAlert("Atención", response);
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                bootBoxAlert("Error", errorThrown);
+
+                            }
+                        });
+                    }
+                }
             }
         }
     );
